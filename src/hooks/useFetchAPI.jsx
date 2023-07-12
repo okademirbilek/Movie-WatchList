@@ -11,7 +11,8 @@ async function useFetchAPI({
 }) {
   let movieID = [];
   const allFilms = [];
-
+  console.log("im heree");
+  document.body.style.cursor = "progress";
   //fetching data
   const response = await fetch(
     `https://omdbapi.com/?apikey=${apiKey}&s=${query}&page=${currentPage}&type=movie`
@@ -27,6 +28,7 @@ async function useFetchAPI({
   if (data.Response === "False") {
     setIsDataReturn(false);
     setLoading(false);
+    document.body.style.cursor = "default";
   } else {
     setIsDataReturn(true);
     //Pushing Data to movie id array we have to hold all the film imdbID's because
@@ -53,6 +55,8 @@ async function useFetchAPI({
     }
     setAllMovies(allFilms);
     setLoading(false);
+    console.log("done");
+    document.body.style.cursor = "default";
   }
 }
 

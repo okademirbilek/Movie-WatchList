@@ -20,7 +20,9 @@ function Home() {
   function setPopularMoviesHtml() {
     const popularMoviesArray = movieData;
     const popularMovies = popularMoviesArray.map((movie) => {
-      return <PopularMovies key={movie.id} movie={movie} />;
+      return (
+        <PopularMovies key={movie.id} movie={movie} justAlert={justAlert} />
+      );
     });
     return popularMovies;
   }
