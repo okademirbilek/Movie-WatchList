@@ -8,10 +8,10 @@ async function useFetchAPI({
   setAllMovies,
   setIsDataReturn,
   setLoading = () => {},
+  setPageCount,
 }) {
   let movieID = [];
   const allFilms = [];
-  console.log("im heree");
   document.body.style.cursor = "progress";
   //fetching data
   const response = await fetch(
@@ -20,9 +20,10 @@ async function useFetchAPI({
   const data = await response.json();
 
   //page calculation
-  console.log("number of movies", data.totalResults);
+  // console.log("number of movies", data.totalResults);
   let numberOfPage = Math.ceil(data.totalResults / 10);
-  console.log("number of page we need", numberOfPage);
+  setPageCount(numberOfPage);
+  // console.log("number of page we need", numberOfPage);
 
   //Catching error if there is an incorrect search
   if (data.Response === "False") {

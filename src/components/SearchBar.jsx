@@ -3,7 +3,12 @@ import useFetchAPI from "../hooks/useFetchAPI";
 
 // const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
-function SearchBar({ setIsShown, setAllMovies, setIsDataReturn }) {
+function SearchBar({
+  setIsShown,
+  setAllMovies,
+  setIsDataReturn,
+  setPageCount,
+}) {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -22,6 +27,7 @@ function SearchBar({ setIsShown, setAllMovies, setIsDataReturn }) {
       setAllMovies,
       setIsDataReturn,
       setLoading,
+      setPageCount,
     });
   };
 

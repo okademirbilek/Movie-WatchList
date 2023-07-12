@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import movieData from "../popularMovies.js";
 
@@ -10,10 +10,14 @@ import MovieCart from "../components/movieCart.jsx";
 import SlickSlider from "../components/SlickSlider.jsx";
 
 import useFetchAPI from "../hooks/useFetchAPI.jsx";
+import PaginatedItems from "../components/PaginatedItems.jsx";
 
 function Home() {
   const [isShown, setIsShown] = useState(false);
   const [allMovies, setAllMovies] = useState([]);
+
+  const [pageCount, setPageCount] = useState(0);
+  console.log(pageCount);
 
   const [isDataReturn, setIsDataReturn] = useState(true);
 
@@ -34,6 +38,7 @@ function Home() {
       query: filmName,
       setAllMovies,
       setIsDataReturn,
+      setPageCount,
     });
   }
 
@@ -47,6 +52,7 @@ function Home() {
         setIsShown={setIsShown}
         setAllMovies={setAllMovies}
         setIsDataReturn={setIsDataReturn}
+        setPageCount={setPageCount}
       />
       <div className="carousel">
         <SlickSlider justAlert={justAlert} />
@@ -59,7 +65,15 @@ function Home() {
             <div id="popular-movies-container">{setPopularMoviesHtml()}</div>
           </>
         ) : isDataReturn ? (
-          filmPage
+          <>
+            {filmPage}
+            <PaginatedItems
+              itemsPerPage={10}
+              items={allMovies}
+              pageCount={pageCount}
+              justAlert={justAlert}
+            />
+          </>
         ) : (
           <div className="error-msg">
             <h5>
