@@ -7,7 +7,7 @@ function PaginatedItems({ itemsPerPage, items, currentMovieInfo, justAlert }) {
     console.log(event.selected);
     let currentPage = event.selected + 1;
 
-    console.log("current PAge ", currentPage);
+    console.log("current Page ", currentPage);
     justAlert({
       filmName: currentMovieInfo.currentMovieName,
       currentPage: currentPage,
@@ -24,6 +24,11 @@ function PaginatedItems({ itemsPerPage, items, currentMovieInfo, justAlert }) {
         pageCount={currentMovieInfo.pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
+        containerClassName="pagination"
+        pageLinkClassName="page-num"
+        previousLinkClassName="page-num"
+        nextLinkClassName="page-num"
+        activeLinkClassName="active"
       />
     </>
   );

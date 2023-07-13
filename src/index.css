@@ -754,3 +754,34 @@ hr {
     opacity: 1;
   }
 }
+
+/* PAGINATION PART */
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.pagination .page-num {
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 600;
+  color: #be1000;
+  text-decoration: none;
+  user-select: none;
+}
+
+.pagination .page-num:hover {
+  background-color: #be1000;
+  color: white;
+}
+
+.pagination .active {
+  background-color: #be1000;
+  color: white;
+}

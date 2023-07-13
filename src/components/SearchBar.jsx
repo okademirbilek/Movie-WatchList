@@ -1,8 +1,6 @@
 import { useState, useRef } from "react";
 import useFetchAPI from "../hooks/useFetchAPI";
 
-// const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
-
 function SearchBar({
   setIsShown,
   setAllMovies,
