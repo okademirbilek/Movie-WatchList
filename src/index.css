@@ -435,9 +435,11 @@ input[type="text"]:focus {
 #add-btn:hover,
 #add-btn-link:hover {
   background-color: rgb(0, 252, 0);
+  box-shadow: 0 0 20px rgb(0, 252, 0);
 }
 #remove-btn:hover {
   background-color: red;
+  box-shadow: 0 0 20px red;
 }
 
 #add-btn:disabled {
@@ -766,22 +768,30 @@ hr {
   gap: 0.5rem;
   margin-top: 1.5rem;
 }
-.pagination .page-num {
+.pagination .page-num,
+.pagination .page {
   padding: 5px 15px;
   cursor: pointer;
   border-radius: 5px;
   font-weight: 600;
-  color: #be1000;
+  color: #0082be;
   text-decoration: none;
   user-select: none;
 }
 
-.pagination .page-num:hover {
-  background-color: #be1000;
+.pagination .page-num {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.pagination .page-num:hover,
+.pagination .page:hover {
+  background-color: #022c40;
   color: white;
+  box-shadow: 0 0 20px white;
 }
 
 .pagination .active {
-  background-color: #be1000;
+  background-color: #022c40;
   color: white;
+  box-shadow: 0 0 20px white;
 }

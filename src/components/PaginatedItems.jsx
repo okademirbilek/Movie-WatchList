@@ -1,7 +1,7 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
 
-function PaginatedItems({ itemsPerPage, items, currentMovieInfo, justAlert }) {
+function PaginatedItems({ currentMovieInfo, justAlert }) {
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     console.log(event.selected);
@@ -18,14 +18,14 @@ function PaginatedItems({ itemsPerPage, items, currentMovieInfo, justAlert }) {
     <>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel="Next >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={currentMovieInfo.pageCount}
-        previousLabel="< previous"
+        previousLabel="< Previous"
         renderOnZeroPageCount={null}
         containerClassName="pagination"
-        pageLinkClassName="page-num"
+        pageLinkClassName="page"
         previousLinkClassName="page-num"
         nextLinkClassName="page-num"
         activeLinkClassName="active"

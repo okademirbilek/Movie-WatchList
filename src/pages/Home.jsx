@@ -12,6 +12,8 @@ import SlickSlider from "../components/SlickSlider.jsx";
 import useFetchAPI from "../hooks/useFetchAPI.jsx";
 import PaginatedItems from "../components/PaginatedItems.jsx";
 
+import useFetchTry from "../hooks/useFetchTry.jsx";
+
 function Home() {
   const [isShown, setIsShown] = useState(false);
   const [allMovies, setAllMovies] = useState([]);
@@ -33,8 +35,12 @@ function Home() {
     return popularMovies;
   }
 
+  useEffect(() => {
+    useFetchTry(currentMovieInfo.currentMovieName);
+  }, [currentMovieInfo.currentMovieName]);
+
   function justAlert({ filmName, currentPage = 1 }) {
-    console.log(filmName);
+    // console.log(filmName);
     setIsShown(true);
     useFetchAPI({
       query: filmName,

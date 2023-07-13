@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import useFetchAPI from "../hooks/useFetchAPI";
 
 function SearchBar({
@@ -42,6 +42,8 @@ function SearchBar({
             onChange={handleChange}
             value={query}
             required
+            minLength={3}
+            // required
           ></input>
         </div>
         <button id="search-btn" type="submit" disabled={loading}>
