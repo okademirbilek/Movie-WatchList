@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactPaginate from "react-paginate";
 
-import useFetchAPI from "../hooks/useFetchAPI.jsx";
-
-function PaginatedItems({ itemsPerPage, items, pageCount }) {
-  const [itemOffset, setItemOffset] = useState(0);
-  const endOffset = itemOffset + itemsPerPage;
-
+function PaginatedItems({ itemsPerPage, items, currentMovieInfo, justAlert }) {
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
-    setItemOffset(newOffset);
     console.log(event.selected);
+    let currentPage = event.selected + 1;
+
+    console.log("current PAge ", currentPage);
+    justAlert({
+      filmName: currentMovieInfo.currentMovieName,
+      currentPage: currentPage,
+    });
   };
 
   return (
@@ -21,7 +21,7 @@ function PaginatedItems({ itemsPerPage, items, pageCount }) {
         nextLabel="next >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
-        pageCount={pageCount}
+        pageCount={currentMovieInfo.pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
       />

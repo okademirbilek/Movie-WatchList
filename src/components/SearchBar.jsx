@@ -7,7 +7,7 @@ function SearchBar({
   setIsShown,
   setAllMovies,
   setIsDataReturn,
-  setPageCount,
+  setCurrentMovieInfo,
 }) {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,8 @@ function SearchBar({
       setAllMovies,
       setIsDataReturn,
       setLoading,
-      setPageCount,
+      setCurrentMovieInfo,
+      currentPage: 1,
     });
   };
 

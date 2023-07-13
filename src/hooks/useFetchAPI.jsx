@@ -3,12 +3,12 @@ import React from "react";
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
 async function useFetchAPI({
-  currentPage = 1,
+  currentPage,
   query,
   setAllMovies,
   setIsDataReturn,
   setLoading = () => {},
-  setPageCount,
+  setCurrentMovieInfo,
 }) {
   let movieID = [];
   const allFilms = [];
@@ -22,7 +22,7 @@ async function useFetchAPI({
   //page calculation
   // console.log("number of movies", data.totalResults);
   let numberOfPage = Math.ceil(data.totalResults / 10);
-  setPageCount(numberOfPage);
+
   // console.log("number of page we need", numberOfPage);
 
   //Catching error if there is an incorrect search
@@ -56,7 +56,10 @@ async function useFetchAPI({
     }
     setAllMovies(allFilms);
     setLoading(false);
-    console.log("done");
+    setCurrentMovieInfo({
+      pageCount: numberOfPage,
+      currentMovieName: query,
+    });
     document.body.style.cursor = "default";
   }
 }

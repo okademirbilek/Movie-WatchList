@@ -2,7 +2,7 @@ function PopularMovies(props) {
   return (
     <div className="container">
       <img
-        onClick={() => props.justAlert(props.movie.title)}
+        onClick={() => props.justAlert({ filmName: props.movie.title })}
         className="movie-image"
         src={props.movie.img}
       ></img>

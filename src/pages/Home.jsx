@@ -16,8 +16,10 @@ function Home() {
   const [isShown, setIsShown] = useState(false);
   const [allMovies, setAllMovies] = useState([]);
 
-  const [pageCount, setPageCount] = useState(0);
-  console.log(pageCount);
+  const [currentMovieInfo, setCurrentMovieInfo] = useState({
+    pageCount: 0,
+    currentMovieName: "",
+  });
 
   const [isDataReturn, setIsDataReturn] = useState(true);
 
@@ -31,14 +33,15 @@ function Home() {
     return popularMovies;
   }
 
-  function justAlert(filmName) {
+  function justAlert({ filmName, currentPage = 1 }) {
     console.log(filmName);
     setIsShown(true);
     useFetchAPI({
       query: filmName,
       setAllMovies,
       setIsDataReturn,
-      setPageCount,
+      setCurrentMovieInfo,
+      currentPage,
     });
   }
 
@@ -52,7 +55,7 @@ function Home() {
         setIsShown={setIsShown}
         setAllMovies={setAllMovies}
         setIsDataReturn={setIsDataReturn}
-        setPageCount={setPageCount}
+        setCurrentMovieInfo={setCurrentMovieInfo}
       />
       <div className="carousel">
         <SlickSlider justAlert={justAlert} />
@@ -70,7 +73,7 @@ function Home() {
             <PaginatedItems
               itemsPerPage={10}
               items={allMovies}
-              pageCount={pageCount}
+              currentMovieInfo={currentMovieInfo}
               justAlert={justAlert}
             />
           </>
