@@ -1,33 +1,18 @@
 import { useState } from "react";
-import useFetchAPI from "../hooks/useFetchAPI";
 
-function SearchBar({
-  setIsShown,
-  setAllMovies,
-  setIsDataReturn,
-  setCurrentMovieInfo,
-}) {
+function SearchBar({ setIsShown, setCurrentMovieName }) {
   const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false);
 
   function handleChange(event) {
     const { value } = event.target;
     setQuery(value);
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     //changing cursor state
-    setLoading(true);
     setIsShown(true);
-    useFetchAPI({
-      query,
-      setAllMovies,
-      setIsDataReturn,
-      setLoading,
-      setCurrentMovieInfo,
-      currentPage: 1,
-    });
+    setCurrentMovieName(query);
   };
 
   return (
@@ -46,7 +31,7 @@ function SearchBar({
             // required
           ></input>
         </div>
-        <button id="search-btn" type="submit" disabled={loading}>
+        <button id="search-btn" type="submit">
           Search
         </button>
       </form>
