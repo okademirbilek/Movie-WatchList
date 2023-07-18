@@ -33,12 +33,12 @@ function MovieCart(props) {
           <div className="film-name">
             <h3>{filmData.Title}</h3>
             <p>⭐</p>
-            {/* <h5>{filmData.imdbRating}</h5> */}
+            <h5>{filmData.imdbRating}</h5>
           </div>
 
           <div className="film-genre">
-            {/* <h4>{filmData.Runtime}</h4>
-            <h5>{filmData.Genre}</h5> */}
+            <h4>{filmData.Runtime}</h4>
+            <h5>{filmData.Genre}</h5>
           </div>
           <div className="btn-container">
             <button
@@ -49,9 +49,9 @@ function MovieCart(props) {
             <h6>Add To Watchlist</h6>
           </div>
         </div>
-        {/* <div className="film-plot">
+        <div className="film-plot">
           <p>{filmData.Plot}</p>
-        </div> */}
+        </div>
       </div>
       <hr></hr>
     </>

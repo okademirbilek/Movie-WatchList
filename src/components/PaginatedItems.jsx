@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import useFetch from "../hooks/useFetch";
-import MovieCart from "../components/MovieCart.jsx";
+import MovieCart from "./MovieCart.jsx";
 
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
@@ -28,6 +28,7 @@ function PaginatedItems({ currentMovieName }) {
         let filmPage = value.Search.map((filmData) => {
           return <MovieCart key={filmData.imdbID} filmData={filmData} />;
         });
+
         setCurrentItems(filmPage);
         let numberOfPage = Math.ceil(value.totalResults / 10);
         setPageCount(numberOfPage);
