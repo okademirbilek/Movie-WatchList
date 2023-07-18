@@ -36,10 +36,10 @@ function MovieCart(props) {
             {/* <h5>{filmData.imdbRating}</h5> */}
           </div>
 
-          {/* <div className="film-genre">
-            <h4>{filmData.Runtime}</h4>
-            <h5>{filmData.Genre}</h5>
-          </div> */}
+          <div className="film-genre">
+            {/* <h4>{filmData.Runtime}</h4>
+            <h5>{filmData.Genre}</h5> */}
+          </div>
           <div className="btn-container">
             <button
               id="add-btn"
