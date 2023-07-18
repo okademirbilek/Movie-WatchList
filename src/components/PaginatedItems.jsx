@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import useFetch from "../hooks/useFetch";
-import MovieCart from "../components/movieCart.jsx";
+import MovieCart from "../components/MovieCart.jsx";
 
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
