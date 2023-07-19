@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SliderItem = ({ movie, justAlert }) => {
   const [isShown, setIsShown] = useState(false);
@@ -15,13 +16,15 @@ const SliderItem = ({ movie, justAlert }) => {
       <h6 className="movie-icon">⭐</h6>
       <h6 className="movie-star">9.7</h6>
       {isShown && (
-        <img
-          className="play-btn"
-          src="https://www.freepnglogos.com/uploads/play-button-png/play-button-ifa-1.png"
-          width="100"
-          alt="play button, ifa"
-          onClick={() => justAlert({ filmName: movie.title })}
-        />
+        // <Link to={`/home/${movie.id}`}>
+        <Link to={`/${"tt0372784"}`}>
+          <img
+            className="play-btn"
+            src="https://www.freepnglogos.com/uploads/play-button-png/play-button-ifa-1.png"
+            width="100"
+            alt="play button, ifa"
+          />
+        </Link>
       )}
     </div>
   );
