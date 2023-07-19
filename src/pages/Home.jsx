@@ -14,7 +14,7 @@ function Home() {
   const [isShown, setIsShown] = useState(false);
   const [currentMovieName, setCurrentMovieName] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-
+  // console.log("CurrentMovieName:", currentMovieName);
   function setPopularMoviesHtml() {
     const popularMoviesArray = movieData;
     const popularMovies = popularMoviesArray.map((movie) => {

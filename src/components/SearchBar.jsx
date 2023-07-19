@@ -10,7 +10,6 @@ function SearchBar({ setIsShown, setCurrentMovieName, setCurrentPage }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //changing cursor state
     setIsShown(true);
     setCurrentPage(0);
     setCurrentMovieName(query);
