@@ -13,6 +13,7 @@ import PaginatedItems from "../components/PaginatedItems.jsx";
 function Home() {
   const [isShown, setIsShown] = useState(false);
   const [currentMovieName, setCurrentMovieName] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
 
   function setPopularMoviesHtml() {
     const popularMoviesArray = movieData;
@@ -26,6 +27,7 @@ function Home() {
     <>
       <SearchBar
         setCurrentMovieName={setCurrentMovieName}
+        setCurrentPage={setCurrentPage}
         setIsShown={setIsShown}
       />
       <div className="carousel">
@@ -41,8 +43,9 @@ function Home() {
         ) : (
           <>
             <PaginatedItems
-              itemsPerPage={10}
               currentMovieName={currentMovieName}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
             />
           </>
         )}

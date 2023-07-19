@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SearchBar({ setIsShown, setCurrentMovieName }) {
+function SearchBar({ setIsShown, setCurrentMovieName, setCurrentPage }) {
   const [query, setQuery] = useState("");
 
   function handleChange(event) {
@@ -12,6 +12,7 @@ function SearchBar({ setIsShown, setCurrentMovieName }) {
     event.preventDefault();
     //changing cursor state
     setIsShown(true);
+    setCurrentPage(0);
     setCurrentMovieName(query);
   };
 
@@ -28,7 +29,6 @@ function SearchBar({ setIsShown, setCurrentMovieName }) {
             value={query}
             required
             minLength={3}
-            // required
           ></input>
         </div>
         <button id="search-btn" type="submit">
