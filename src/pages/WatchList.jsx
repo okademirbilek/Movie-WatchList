@@ -1,13 +1,25 @@
 import { useContext } from "react";
 import { Context } from "../Context";
 import { Link } from "react-router-dom";
-import WatchListCart from "../components/WatchListCart";
+// import WatchListCart from "../components/WatchListCart";
+import MovieCart from "../components/MovieCart";
 
 function WatchList() {
-  const { watchList } = useContext(Context);
+  const { removeFromWachList, watchList } = useContext(Context);
 
+  // const watchListElement = watchList.map((movie) => {
+  //   return <WatchListCart key={movie.imdbID} filmData={movie} />;
+  // });
   const watchListElement = watchList.map((movie) => {
-    return <WatchListCart key={movie.imdbID} filmData={movie} />;
+    return (
+      <MovieCart
+        key={movie.imdbID}
+        filmData={movie}
+        onClick={removeFromWachList}
+        btnId="remove-btn"
+        wantSpace={true}
+      />
+    );
   });
 
   return (

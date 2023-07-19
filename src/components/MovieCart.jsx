@@ -1,13 +1,18 @@
 import { useContext } from "react";
 import { Context } from "../Context";
 
-function MovieCart(props) {
-  const { filmData } = props;
-  const { addToWatchList, watchList } = useContext(Context);
+function MovieCart({ filmData, onClick, btnId, wantSpace = false }) {
+  const { watchList } = useContext(Context);
   //check if the film already in the watchlist
-  let isExist = watchList.some(
-    (filmList) => filmList["imdbID"] === filmData.imdbID
-  );
+  let isExist = null;
+  if (btnId === "add-btn") {
+    isExist = watchList.some(
+      (filmList) => filmList["imdbID"] === filmData.imdbID
+    );
+  }
+
+  const detail = btnId === "add-btn" ? filmData : filmData.imdbID;
+
   return (
     <>
       <div className="film-container">
@@ -42,8 +47,10 @@ function MovieCart(props) {
           </div>
           <div className="btn-container">
             <button
-              id="add-btn"
-              onClick={() => addToWatchList(filmData)}
+              // id="add-btn"
+              id={btnId}
+              // onClick={() => addToWatchList(filmData)}
+              onClick={() => onClick(detail)}
               disabled={isExist}
             ></button>
             <h6>Add To Watchlist</h6>
@@ -53,7 +60,7 @@ function MovieCart(props) {
           <p>{filmData.Plot}</p>
         </div>
       </div>
-      <hr></hr>
+      {wantSpace && <hr></hr>}
     </>
   );
 }

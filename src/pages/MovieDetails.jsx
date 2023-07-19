@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import MovieCart from "../components/MovieCart";
+
+import { Context } from "../Context";
 
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
@@ -8,16 +10,19 @@ export default function MovieDetails() {
   const params = useParams();
   const [data, setData] = React.useState(null);
 
+  const { addToWatchList } = useContext(Context);
+
   useEffect(() => {
     fetch(`https://omdbapi.com/?apikey=${apiKey}&i=${params.id}`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [params.id]);
+
   return (
     <div className="movie-detail-container">
       {data ? (
         <>
-          <MovieCart filmData={data} />
+          <MovieCart filmData={data} onClick={addToWatchList} btnId="add-btn" />
           <div className="video-container">
             <iframe
               width="1271"

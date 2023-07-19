@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ReactPaginate from "react-paginate";
 import useFetch from "../hooks/useFetch";
 import MovieCart from "./MovieCart.jsx";
+
+import { Context } from "../Context";
+import WatchList from "../pages/WatchList";
 
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
 function PaginatedItems({ currentMovieName, setCurrentPage, currentPage }) {
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
+
+  const { addToWatchList } = useContext(Context);
 
   const { loading, error, value } = useFetch(
     `https://omdbapi.com/?apikey=${apiKey}&s=${currentMovieName}&page=${
@@ -22,7 +27,15 @@ function PaginatedItems({ currentMovieName, setCurrentPage, currentPage }) {
     if (loading === false) {
       if (value.Response === "True") {
         const filmPage = value.Search.map((filmData) => {
-          return <MovieCart key={filmData.imdbID} filmData={filmData} />;
+          return (
+            <MovieCart
+              key={filmData.imdbID}
+              filmData={filmData}
+              onClick={addToWatchList}
+              btnId="add-btn"
+              wantSpace={true}
+            />
+          );
         });
         setCurrentItems(filmPage);
         // console.log("filmpage", filmPage);
