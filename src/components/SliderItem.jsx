@@ -17,7 +17,7 @@ const SliderItem = ({ movie, justAlert }) => {
       <h6 className="movie-star">9.7</h6>
       {isShown && (
         // <Link to={`/home/${movie.id}`}>
-        <Link to={`/${"tt0372784"}`}>
+        <Link to={`/${movie.id}`}>
           <img
             className="play-btn"
             src="https://www.freepnglogos.com/uploads/play-button-png/play-button-ifa-1.png"

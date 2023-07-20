@@ -1,11 +1,12 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 function PopularMovies(props) {
   return (
     <div className="container">
-      <img
-        onClick={() => props.justAlert({ filmName: props.movie.title })}
-        className="movie-image"
-        src={props.movie.img}
-      ></img>
+      <Link to={`/${props.movie.id}`}>
+        <img className="movie-image" src={props.movie.img}></img>
+      </Link>
       <div className="popular-film-info">
         <p>{props.movie.title}</p>
         <p>Year: {props.movie.year}</p>

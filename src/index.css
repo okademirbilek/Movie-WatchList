@@ -340,6 +340,7 @@ input[type="text"]:focus {
   width: 130px;
   height: 25vh;
   border-radius: 0.4em;
+  cursor: pointer;
 }
 
 .film-info {

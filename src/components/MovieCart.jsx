@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Context } from "../Context";
+import { Link } from "react-router-dom";
 
 function MovieCart({ filmData, onClick, btnId, wantSpace = false }) {
   const { watchList } = useContext(Context);
@@ -41,6 +42,9 @@ function MovieCart({ filmData, onClick, btnId, wantSpace = false }) {
             <p>⭐</p>
             <h5>{filmData.imdbRating}</h5>
           </div>
+
+          {/* <div>imdbID : {filmData.imdbID}</div> */}
+          <Link to={`/${filmData.imdbID}`}>Go to detail page</Link>
 
           <div className="film-genre">
             <h4>{filmData.Runtime}</h4>

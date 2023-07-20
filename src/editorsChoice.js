@@ -1,159 +1,119 @@
-const movieData =[
-    {
-        "id": 1,
-        "title": "Ant-Man and The Wasp: Quantumania",
-        "url": "https://www.rottentomatoes.com/m/ant_man_and_the_wasp_quantumania",
-        "img": "https://resizing.flixster.com/Kyz5hyQIexUuB2PjCgEn6HeLMZU=/fit-in/180x240/v2/https://resizing.flixster.com/_0Mhf0W_vdhwlaqOaUDX6JiReKA=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzE0OGY2MTIxLTE1MDEtNDI5YS1hYzVlLWYyMzExYjBmZTlhMC5qcGc=",
-        "year": "2023",
-        "starring": [
-            "Paul Rudd",
-            "Evangeline Lilly",
-            "Jonathan Majors",
-            "Bill Murray"
-        ],
-        "directedBy": [
-            "Peyton Reed"
-        ]
-    },
-    {
-        "id": 2,
-        "title": "Knock at the Cabin",
-        "url": "https://www.rottentomatoes.com/m/knock_at_the_cabin",
-        "img": "https://resizing.flixster.com/rxPJ1I5l8oei28YXkd2latAw8m0=/fit-in/180x240/v2/https://resizing.flixster.com/5dJGA-d38uNrcR2nDq1UmVBRuHc=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzA4NDdmZDU3LWMxNTQtNDczOC04M2VkLTQzNzQ5NGVkODExZi5qcGc=",
-        "year": "2023",
-        "starring": [
-            "Dave Bautista",
-            "Jonathan Groff",
-            "Ben Aldridge",
-            "Nikki Amuka-Bird"
-        ],
-        "directedBy": [
-            "M. Night Shyamalan"
-        ]
-    },
-    {
-        "id": 3,
-        "title": "All That Breathes",
-        "url": "https://www.rottentomatoes.com/m/all_that_breathes",
-        "img": "https://resizing.flixster.com/q_7NUBztTbPiCnyUTXZm32hWr9o=/fit-in/180x240/v2/https://resizing.flixster.com/sP16cjgBL-XWStdPbig_SMF_kYs=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzMzYmQyMjk5LWMzMTYtNGY4OS1hOGU5LTMxZWNhMDBjZTgwNy5qcGc=",
-        "year": "2022",
-        "starring": [],
-        "directedBy": [
-            "Shaunak Sen"
-        ]
-    },
-    {
-        "id": 4,
-        "title": "Your Place or Mine",
-        "url": "https://www.rottentomatoes.com/m/your_place_or_mine_2023",
-        "img": "https://resizing.flixster.com/VKmpnuxxOp5XDxgOY-L5KlGPCug=/fit-in/180x240/v2/https://resizing.flixster.com/boLnoOLSE8jn8Rk2vVsnIP2WIvg=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2IwMThjNTU3LTM5MTUtNDNkZS1iOGU4LWYwMDhkMDg3NzgzMy5qcGc=",
-        "year": "2023",
-        "starring": [
-            "Reese Witherspoon",
-            "Ashton Kutcher",
-            "Steve Zahn",
-            "Wesley Kimmel"
-        ],
-        "directedBy": [
-            "Aline Brosh McKenna"
-        ]
-    },
-    {
-        "id": 5,
-        "title": "Magic Mike's Last Dance",
-        "url": "https://www.rottentomatoes.com/m/magic_mikes_last_dance",
-        "img": "https://resizing.flixster.com/4m4IdixT5f7aySeN0l3_FIFKC0I=/fit-in/180x240/v2/https://resizing.flixster.com/dSyi0qq5pZSCRC1VH_oo02R4QRE=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzRhMWZhYmFhLWFmODgtNDg1MC1hMTk5LWMwOTcyMDhjY2Y1YS5qcGc=",
-        "year": "2023",
-        "starring": [
-            "Channing Tatum",
-            "Salma Hayek",
-            "Caitlin Gerard",
-            "Gavin Spokes"
-        ],
-        "directedBy": [
-            "Steven Soderbergh"
-        ]
-    },
-    {
-        "id": 6,
-        "title": "Plane",
-        "url": "https://www.rottentomatoes.com/m/plane",
-        "img": "https://resizing.flixster.com/MCZVMmu066oFq26rnAueV0uF0rg=/fit-in/180x240/v2/https://resizing.flixster.com/96gGzEOuV_fOYF8NKCANgRXH3SI=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzUzN2ViMzg3LWNjNGUtNDFjZC1hMzZiLTgyYWEwOWIzZTdlZi5qcGc=",
-        "year": "2023",
-        "starring": [
-            "Gerard Butler",
-            "Mike Colter",
-            "Yoson An",
-            "Daniella Pineda"
-        ],
-        "directedBy": [
-            "Jean-François Richet"
-        ]
-    },
-    {
-        "id": 7,
-        "title": "M3GAN",
-        "url": "https://www.rottentomatoes.com/m/m3gan",
-        "img": "https://resizing.flixster.com/LMbScjDLUzsQLgeeoOF0FAhNcC8=/fit-in/180x240/v2/https://resizing.flixster.com/rPJASTXFjLpmiVTi3D6RGcq-skM=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzhjYjA0ODBiLTNlNmUtNDlhOS05ZWRlLThlOGQ2MmEyZjlmYS5qcGc=",
-        "year": "2022",
-        "starring": [
-            "Allison Williams",
-            "Violet McGraw",
-            "Ronny Chieng",
-            "Brian Jordan Alvarez"
-        ],
-        "directedBy": [
-            "Gerard Johnstone"
-        ]
-    },
-    {
-        "id": 8,
-        "title": "You People",
-        "url": "https://www.rottentomatoes.com/m/you_people_2023",
-        "img": "https://resizing.flixster.com/fd5FRTShNXhXCnrMGVQE-tB4IgI=/fit-in/180x240/v2/https://resizing.flixster.com/aGnQYra1iGiD80rvz89jeaAvSWo=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2ViNTY4YzYwLTA0YjMtNDRlMS04YjllLTUyZWQ4ZmRjOGRiYi5qcGc=",
-        "year": "2023",
-        "starring": [
-            "Jonah Hill",
-            "Lauren London",
-            "Eddie Murphy",
-            "Julia Louis-Dreyfus"
-        ],
-        "directedBy": [
-            "Kenya Barris"
-        ]
-    },
-    {
-        "id": 9,
-        "title": "Puss in Boots: The Last Wish",
-        "url": "https://www.rottentomatoes.com/m/puss_in_boots_the_last_wish",
-        "img": "https://resizing.flixster.com/SScFkb_uOTYce9WEQrSiGeJtMXE=/fit-in/180x240/v2/https://resizing.flixster.com/vtIcjOYiM-QBXQyXhTFFgQoRkDw=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2JmNjM3ZTc2LTk5ZmMtNGJhNy04MDAzLWI3M2IxNmExNDNkYi5qcGc=",
-        "year": "2022",
-        "starring": [
-            "Antonio Banderas",
-            "Salma Hayek",
-            "Olivia Colman",
-            "Harvey Guillen"
-        ],
-        "directedBy": [
-            "Joel Crawford"
-        ]
-    },
-    {
-        "id": 23,
-        "title": "Tár",
-        "url": "https://www.rottentomatoes.com/m/tar_2022",
-        "img": "https://resizing.flixster.com/hii0QV_oX-zs2xcuyf1WmGRfxNU=/fit-in/180x240/v2/https://resizing.flixster.com/wFUHH4yTM6tmK4R-0f6pCrCPpB0=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzBlZGZjZWM1LTVkNmMtNDYzZC1iNjc0LTYwNDY0YTkzYTExYy5qcGc=",
-        "year": "2022",
-        "starring": [
-            "Cate Blanchett",
-            "Noémie Merlant",
-            "Nina Hoss",
-            "Sophie Kauer"
-        ],
-        "directedBy": [
-            "Todd Field"
-        ]
-    }
-]
+const movieData = [
+  {
+    id: "tt6791350",
+    title: "Guardians of the Galaxy Vol. 3",
+    url: "https://www.rottentomatoes.com/m/guardians_of_the_galaxy_vol_3",
+    img: "https://resizing.flixster.com/5seKiRmH981Y2amg0vmHmj5WnXo=/fit-in/180x240/v2/https://resizing.flixster.com/p8g-u3ZgPuxrg4x7aq1tidyffGg=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2FiZDg0OTc0LWVkMTktNDVhYS05ODljLTNkMjYxMjA0OTdjMy5qcGc=",
+    year: "2023",
+    starring: ["Chris Pratt", "Zoe Saldana", "Dave Bautista", "Karen Gillan"],
+    directedBy: ["James Gunn"],
+  },
+  {
+    id: "tt2906216",
+    title: "Dungeons & Dragons: Honor Among Thieves",
+    url: "https://www.rottentomatoes.com/m/dungeons_and_dragons_honor_among_thieves",
+    img: "https://resizing.flixster.com/IwFK1YWt1-pAzhnGdY9KTLLjEQM=/fit-in/180x240/v2/https://resizing.flixster.com/eWLvyboOEGZRS2JiBDZ6eRD4Hps=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzU2MTc5YzE5LTc3YjktNDIyMS05ZWZhLTNlNzBjZmZkM2JlMS5qcGc=",
+    year: "2023",
+    starring: [
+      "Chris Pine",
+      "Michelle Rodriguez",
+      "Regé-Jean Page",
+      "Justice Jesse Smith",
+    ],
+    directedBy: ["Jonathan M. Goldstein", "John Francis Daley"],
+  },
+  {
+    id: "tt5635026",
+    title: "Peter Pan & Wendy",
+    url: "https://www.rottentomatoes.com/m/peter_pan_and_wendy",
+    img: "https://resizing.flixster.com/yUjbuHdhJI60p_rjKYe-h09vZyM=/fit-in/180x240/v2/https://resizing.flixster.com/VWUm7CchIbz-vWynjdE9q0l3OvU=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2U2OGI1M2FmLWYxZDctNDQxYS04N2ViLThmOTRiNzYwMWUzMC5qcGc=",
+    year: "2023",
+    starring: [
+      "Alexander Molony",
+      "Ever Anderson",
+      "Jude Law",
+      "Alyssa Wapanatâhk",
+    ],
+    directedBy: ["David Lowery"],
+  },
+  {
+    id: "tt6718170",
+    title: "The Super Mario Bros. Movie",
+    url: "https://www.rottentomatoes.com/m/the_super_mario_bros_movie",
+    img: "https://resizing.flixster.com/-NKi376avuUz6vzaZgW5z4dBkxE=/fit-in/180x240/v2/https://resizing.flixster.com/nQN8KYVFA4fD23Li3TCLwKYz8GA=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2JlYWVjZDdiLTMyYjMtNDgzNy1iN2M0LTgzYWZkODIzMmZmOS5qcGc=",
+    year: "2023",
+    starring: ["Chris Pratt", "Anya Taylor-Joy", "Charlie Day", "Jack Black"],
+    directedBy: ["Aaron Horvath", "Michael Jelenic"],
+  },
+  {
+    id: "tt13345606",
+    title: "Evil Dead Rise",
+    url: "https://www.rottentomatoes.com/m/evil_dead_rise",
+    img: "https://resizing.flixster.com/TWYzWG7xYYms3pGenxWgI3nyErw=/fit-in/180x240/v2/https://resizing.flixster.com/rWoHzijYNZv7RJb5P7BQQoGOo80=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2U2YzliZDFjLWI2NTUtNDFmMi04OTUzLTUwNGFlOTRkOWIyNy5qcGc=",
+    year: "2023",
+    starring: [
+      "Lily Sullivan",
+      "Alyssa Sutherland",
+      "Morgan Davies",
+      "Gabrielle Echols",
+    ],
+    directedBy: ["Lee Cronin"],
+  },
+  {
+    id: "tt11358390",
+    title: "Renfield",
+    url: "https://www.rottentomatoes.com/m/renfield",
+    img: "https://resizing.flixster.com/mm70RwQfr50zB-xgihilC_1mQOU=/fit-in/180x240/v2/https://resizing.flixster.com/T4HHyueGWhklRu6uZss1jA5PiTY=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzAwODEwNjcxLTFjZWMtNDJlNC1hOGI2LWIwNzlkZjg3MjFlNS5qcGc=",
+    year: "2023",
+    starring: ["Nicolas Cage", "Nicholas Hoult", "Awkwafina", "Ben Schwartz"],
+    directedBy: ["Chris McKay"],
+  },
+  {
+    id: "tt15326988",
+    title: "Ghosted",
+    url: "https://www.rottentomatoes.com/m/ghosted_2023",
+    img: "https://resizing.flixster.com/F_KYTBylpfRC_qfGgLIeSDCfyi0=/fit-in/180x240/v2/https://resizing.flixster.com/b-IiMmd59d7GxQeGfXt2_0GIaD0=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzg0ZTc3NWY1LTFmNWMtNGZkNi1hYjIwLWIzMjkyNDYwNDczNi5wbmc=",
+    year: "2023",
+    starring: ["Chris Evans", "Ana de Armas", "Adrien Brody", "Mike Moh"],
+    directedBy: ["Dexter Fletcher"],
+  },
+  {
+    id: "tt10366206",
+    title: "John Wick: Chapter 4",
+    url: "https://www.rottentomatoes.com/m/john_wick_chapter_4",
+    img: "https://resizing.flixster.com/AplxvuaxmELPdwmen0mu3uivAlA=/fit-in/180x240/v2/https://resizing.flixster.com/ayiSi8HrUS3_i-Jkru1P2oMM58Q=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzhiODAwYWIyLTM1MmItNGI1ZS1iOWQzLTdjZjAzMzI1MDc2Yy5qcGc=",
+    year: "2023",
+    starring: [
+      "Keanu Reeves",
+      "Donnie Yen Ji-Dan",
+      "Bill Skarsgård",
+      "Laurence Fishburne",
+    ],
+    directedBy: ["Chad Stahelski"],
+  },
+  {
+    id: "tt16428256",
+    title: "Suzume",
+    url: "https://www.rottentomatoes.com/m/suzume",
+    img: "https://resizing.flixster.com/hVnX-9A1RhFcU587nxiI6R5-bs4=/fit-in/180x240/v2/https://resizing.flixster.com/zg3xSM8uDH5CXhrMDpZ-p4qhpp8=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzI3OGExOWVjLTIwNGEtNGRhNS1hMzIxLTE5OGFhYWNlOWRhOS5wbmc=",
+    year: "2022",
+    starring: [
+      "Nanoka Hara",
+      "Hokuto Matsumura",
+      "Eri Fukatsu",
+      "Hakuo Matsumoto II",
+    ],
+    directedBy: ["Makoto Shinkai"],
+  },
+  {
+    id: "tt7405458",
+    title: "A Man Called Otto",
+    url: "https://www.rottentomatoes.com/m/a_man_called_otto",
+    img: "https://resizing.flixster.com/vVUWQMLIueGcmqsLjpPutdey_yI=/fit-in/180x240/v2/https://resizing.flixster.com/l3hMOt6cWOpnE-s2f9ryvvFRwdM=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzQxYjJlNGIwLWE1YWMtNDU0NC05NDc3LTVkMTUwYWMyZGIyNy5qcGc=",
+    year: "2022",
+    starring: ["Tom Hanks", "Mack Bayda", "Mariana Treviño", "Rachel Keller"],
+    directedBy: ["Marc Forster"],
+  },
+];
 
-export default movieData
+export default movieData;
