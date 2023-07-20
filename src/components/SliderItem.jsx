@@ -3,15 +3,22 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SliderItem = ({ movie, justAlert }) => {
+const SliderItem = ({ movie }) => {
   const [isShown, setIsShown] = useState(false);
+  const styles = isShown
+    ? {
+        boxShadow: "0px 0px 30px 0px white",
+        opacity: 0.5,
+      }
+    : {};
+
   return (
     <div
       className="carousel-container"
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
-      <img className="carousel-img" src={movie.img}></img>
+      <img className="carousel-img" style={styles} src={movie.img}></img>
       <h6 className="movie-year">{movie.year}</h6>
       <h6 className="movie-icon">⭐</h6>
       <h6 className="movie-star">9.7</h6>

@@ -8,9 +8,14 @@ function PopularMovies(props) {
         <img className="movie-image" src={props.movie.img}></img>
       </Link>
       <div className="popular-film-info">
-        <p>{props.movie.title}</p>
+        <div className="popular-film-directed ellipsis">
+          <p>{props.movie.title}</p>
+        </div>
+
         <p>Year: {props.movie.year}</p>
-        <p>{props.movie.directedBy}</p>
+        <div className="popular-film-directed ellipsis">
+          <p>{props.movie.directedBy}</p>
+        </div>
       </div>
     </div>
   );
