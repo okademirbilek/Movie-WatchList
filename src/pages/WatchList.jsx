@@ -23,7 +23,9 @@ function WatchList() {
     <>
       {watchList.length === 0 ? (
         <div className="empty-watchlist">
-          <p>Your watchlist is looking a little empty...</p>
+          <p className="watchlist-text">
+            Your watchlist is looking a little empty...
+          </p>
           <span className="add-btn-container">
             <Link to="/">
               <h6 id="add-btn-link"></h6>

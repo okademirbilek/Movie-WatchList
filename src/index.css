@@ -473,8 +473,23 @@ hr {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-top: 2em;
-  height: 56.8vh;
+  /* margin-top: 2em; */
+  height: 70vh;
+  background-image: url("https://images6.alphacoders.com/778/778373.jpg");
+
+  /* "https://images3.alphacoders.com/114/1143846.jpg" flash */
+  /* "https://images4.alphacoders.com/106/1068870.jpg" batman */
+  /* "https://images8.alphacoders.com/110/1104267.jpg" superman */
+  /* "https://images6.alphacoders.com/778/778373.jpg" batman2 */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position: center; */
+}
+
+.watchlist-text {
+  margin-top: 3em;
+  font-weight: 400;
+  font-size: 1.2rem;
 }
 
 .add-btn-container {
