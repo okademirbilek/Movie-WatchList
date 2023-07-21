@@ -7,9 +7,6 @@ import MovieCart from "../components/MovieCart";
 function WatchList() {
   const { removeFromWachList, watchList } = useContext(Context);
 
-  // const watchListElement = watchList.map((movie) => {
-  //   return <WatchListCart key={movie.imdbID} filmData={movie} />;
-  // });
   const watchListElement = watchList.map((movie) => {
     return (
       <MovieCart

@@ -23,7 +23,6 @@ const SliderItem = ({ movie }) => {
       <h6 className="movie-icon">⭐</h6>
       <h6 className="movie-star">9.7</h6>
       {isShown && (
-        // <Link to={`/home/${movie.id}`}>
         <Link to={`/${movie.id}`}>
           <img
             className="play-btn"

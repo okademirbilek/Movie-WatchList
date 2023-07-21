@@ -42,8 +42,6 @@ function MovieCart({ filmData, onClick, btnId, wantSpace = false }) {
             <p>⭐</p>
             <h5>{filmData.imdbRating}</h5>
           </div>
-
-          {/* <div>imdbID : {filmData.imdbID}</div> */}
           <Link to={`/${filmData.imdbID}`}>Go to detail page</Link>
 
           <div className="film-genre">
@@ -52,9 +50,7 @@ function MovieCart({ filmData, onClick, btnId, wantSpace = false }) {
           </div>
           <div className="btn-container">
             <button
-              // id="add-btn"
               id={btnId}
-              // onClick={() => addToWatchList(filmData)}
               onClick={() => onClick(detail)}
               disabled={isExist}
             ></button>
