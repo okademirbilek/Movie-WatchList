@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import movieData from "../popularMovies.js";
 
@@ -14,6 +14,9 @@ function Home() {
   const [isShown, setIsShown] = useState(false);
   const [currentMovieName, setCurrentMovieName] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
+
+  const focusDiv = useRef(null);
+
   // console.log("CurrentMovieName:", currentMovieName);
   function setPopularMoviesHtml() {
     const popularMoviesArray = movieData;
@@ -30,7 +33,7 @@ function Home() {
         setCurrentPage={setCurrentPage}
         setIsShown={setIsShown}
       />
-      <div className="carousel">
+      <div className="carousel" ref={focusDiv}>
         <SlickSlider />
       </div>
 
@@ -46,6 +49,7 @@ function Home() {
               currentMovieName={currentMovieName}
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
+              focusDiv={focusDiv}
             />
           </>
         )}

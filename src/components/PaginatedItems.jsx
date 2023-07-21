@@ -8,7 +8,12 @@ import WatchList from "../pages/WatchList";
 
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
-function PaginatedItems({ currentMovieName, setCurrentPage, currentPage }) {
+function PaginatedItems({
+  currentMovieName,
+  setCurrentPage,
+  currentPage,
+  focusDiv,
+}) {
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
 
@@ -58,11 +63,12 @@ function PaginatedItems({ currentMovieName, setCurrentPage, currentPage }) {
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     setCurrentPage(event.selected);
+    focusDiv.current.scrollIntoView();
   };
 
   return (
     <>
-      {loading === false ? currentItems : ""}
+      {currentItems}
       <ReactPaginate
         breakLabel="..."
         nextLabel="Next >"

@@ -13,9 +13,12 @@ export default function MovieDetails() {
   const { addToWatchList } = useContext(Context);
 
   useEffect(() => {
-    fetch(`https://omdbapi.com/?apikey=${apiKey}&i=${params.id}`)
+    fetch(`https://omdbapi.com/?apikey=${apiKey}&i=${params.id}&plot=short`)
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        setData(data);
+        console.log(data);
+      });
   }, [params.id]);
 
   return (
