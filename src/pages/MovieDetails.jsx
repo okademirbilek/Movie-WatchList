@@ -22,7 +22,12 @@ export default function MovieDetails() {
     <div className="movie-detail-container">
       {data ? (
         <>
-          <MovieCart filmData={data} onClick={addToWatchList} btnId="add-btn" />
+          <MovieCart
+            filmData={data}
+            onClick={addToWatchList}
+            btnId="add-btn"
+            detailPage={false}
+          />
           <div className="video-container">
             <iframe
               width="1271"

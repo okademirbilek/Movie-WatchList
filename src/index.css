@@ -530,7 +530,7 @@ hr {
   .film-info {
     height: fit-content;
     width: fit-content;
-    margin-top: 0.5em;
+    /* margin-top: 0.5em; */
   }
 
   .film-name {

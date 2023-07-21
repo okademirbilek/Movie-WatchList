@@ -2,7 +2,13 @@ import { useContext } from "react";
 import { Context } from "../Context";
 import { Link } from "react-router-dom";
 
-function MovieCart({ filmData, onClick, btnId, wantSpace = false }) {
+function MovieCart({
+  filmData,
+  onClick,
+  btnId,
+  wantSpace = false,
+  detailPage = true,
+}) {
   const { watchList } = useContext(Context);
   //check if the film already in the watchlist
   let isExist = null;
@@ -42,7 +48,10 @@ function MovieCart({ filmData, onClick, btnId, wantSpace = false }) {
             <p>⭐</p>
             <h5>{filmData.imdbRating}</h5>
           </div>
-          <Link to={`/${filmData.imdbID}`}>Go to detail page</Link>
+
+          {detailPage ? (
+            <Link to={`/${filmData.imdbID}`}>Go to detail page</Link>
+          ) : null}
 
           <div className="film-genre">
             <h4>{filmData.Runtime}</h4>
