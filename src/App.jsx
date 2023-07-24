@@ -5,6 +5,7 @@ import "./index.css";
 import MovieDetails from "./pages/MovieDetails.jsx";
 import { BrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
+import NotFound from "./pages/notFound";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/:id" element={<MovieDetails />} />
             <Route path="/watchList" element={<WatchList />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

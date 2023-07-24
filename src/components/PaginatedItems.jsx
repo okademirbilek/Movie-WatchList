@@ -4,7 +4,6 @@ import useFetch from "../hooks/useFetch";
 import MovieCart from "./MovieCart.jsx";
 
 import { Context } from "../Context";
-import WatchList from "../pages/WatchList";
 
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
