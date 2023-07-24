@@ -65,6 +65,11 @@ function PaginatedItems({
     focusDiv.current.scrollIntoView();
   };
 
+  //error handling
+  if (error) {
+    return error;
+  }
+
   return (
     <>
       {currentItems}
