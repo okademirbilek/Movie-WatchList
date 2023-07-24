@@ -814,7 +814,7 @@ hr {
 .pagination .page:hover {
   background-color: #022c40;
   color: white;
-  box-shadow: 0 0 20px white;
+  box-shadow: 0 0 20px var(--text);
 }
 
 .pagination .active {
@@ -846,19 +846,34 @@ footer {
 }
 
 /* NotFoundPage */
-/* .App {
+.notfound-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   flex-direction: column;
   height: 100vh;
-} */
-/* .App a {
+  gap: 1em;
+  background: #0c0950;
+  background: -webkit-radial-gradient(
+    circle,
+    #0c0950 0%,
+    #000000 50%,
+    #9901ab 100%
+  );
+  background: radial-gradient(circle, #0c0950 0%, #000000 50%, #9901ab 100%);
+}
+
+.notfound-link {
   background-color: #161616;
-  color: white;
+  color: var(--text);
   text-decoration: none;
   padding: 0.5em;
   border-radius: 10px;
-  width: 50%;
+  width: 40%;
   text-align: center;
-} */
+}
+
+.notfound-link:hover {
+  box-shadow: 0 0 20px var(--text);
+}
