@@ -5,7 +5,7 @@ import "./index.css";
 import MovieDetails from "./pages/MovieDetails.jsx";
 import { BrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
-import NotFound from "./pages/notFound";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
