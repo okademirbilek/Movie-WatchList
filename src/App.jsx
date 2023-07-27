@@ -6,21 +6,34 @@ import MovieDetails from "./pages/MovieDetails.jsx";
 import { BrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
 import NotFound from "./pages/NotFound";
+import AuthRequired from "./components/AuthRequired";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import { AuthProvider } from "./context/AuthContext";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/:id" element={<MovieDetails />} />
-            <Route path="/watchList" element={<WatchList />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <AuthProvider>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+
+            <Route element={<AuthRequired />}>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="details/:id" element={<MovieDetails />} />
+                <Route path="/watchList" element={<WatchList />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </AuthProvider>
   );
 }
 

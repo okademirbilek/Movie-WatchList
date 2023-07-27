@@ -23,7 +23,7 @@ const SliderItem = ({ movie }) => {
       <h6 className="movie-icon">⭐</h6>
       <h6 className="movie-star">9.7</h6>
       {isShown && (
-        <Link to={`/${movie.id}`}>
+        <Link to={`/details/${movie.id}`}>
           <img
             className="play-btn"
             src="https://www.freepnglogos.com/uploads/play-button-png/play-button-ifa-1.png"

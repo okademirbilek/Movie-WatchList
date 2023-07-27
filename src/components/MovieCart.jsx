@@ -50,7 +50,7 @@ function MovieCart({
           </div>
 
           {detailPage ? (
-            <Link to={`/${filmData.imdbID}`}>Go to detail page</Link>
+            <Link to={`/details/${filmData.imdbID}`}>Go to detail page</Link>
           ) : null}
 
           <div className="film-genre">
