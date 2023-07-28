@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function PopularMovies(props) {
   return (
     <div className="container">
-      <Link to={`/details${props.movie.id}`}>
+      <Link to={`/details/${props.movie.id}`}>
         <img className="movie-image" src={props.movie.img}></img>
       </Link>
       <div className="popular-film-info">

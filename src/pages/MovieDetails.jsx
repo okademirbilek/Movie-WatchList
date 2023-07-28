@@ -2,50 +2,53 @@ import React, { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import MovieCart from "../components/MovieCart";
 
+import useFetch from "../hooks/useFetch";
+
 import { Context } from "../Context";
 
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
 export default function MovieDetails() {
   const params = useParams();
-  const [data, setData] = React.useState(null);
+  console.log(params);
 
   const { addToWatchList } = useContext(Context);
 
-  useEffect(() => {
-    fetch(`https://omdbapi.com/?apikey=${apiKey}&i=${params.id}&plot=short`)
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        console.log(data);
-      });
-  }, [params.id]);
+  const { loading, error, value } = useFetch(
+    `https://omdbapi.com/?apikey=${apiKey}&i=${params.id}&plot=short`,
+    {},
+    [params.id]
+  );
+
+  if (loading) {
+    return <h1 className="error-msg">Loading...</h1>;
+  }
+
+  if (value) {
+    if (value.Response === "False") {
+      return <h1 className="error-msg">Error: {value.Error}</h1>;
+    }
+  }
+
+  if (error) {
+    return (
+      <div className="error-msg">
+        Error occured:Unable to find what you’re looking for
+        {JSON.stringify(error, null, 2)}
+      </div>
+    );
+  }
 
   return (
     <div className="movie-detail-container">
-      {data ? (
-        <>
-          <MovieCart
-            filmData={data}
-            onClick={addToWatchList}
-            btnId="add-btn"
-            detailPage={false}
-          />
-          <div className="video-container">
-            <iframe
-              width="1271"
-              height="715"
-              src="https://www.youtube.com/embed/mqqft2x_Aa4"
-              title="THE BATMAN – Main Trailer"
-              // frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </>
-      ) : (
-        <h2>Loading...</h2>
-      )}
+      <>
+        <MovieCart
+          filmData={value}
+          onClick={addToWatchList}
+          btnId="add-btn"
+          detailPage={false}
+        />
+      </>
     </div>
   );
 }
