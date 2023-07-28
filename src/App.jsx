@@ -11,6 +11,8 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import { AuthProvider } from "./context/AuthContext";
 import Dashboard from "./pages/Dashboard";
+import ForgotPassword from "./pages/ForgotPassword";
+import UpdateProfile from "./pages/UpdateProfile";
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
 
             <Route element={<AuthRequired />}>
               <Route path="/" element={<Layout />}>
@@ -27,6 +30,7 @@ function App() {
                 <Route path="details/:id" element={<MovieDetails />} />
                 <Route path="/watchList" element={<WatchList />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/update-profile" element={<UpdateProfile />} />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Route>

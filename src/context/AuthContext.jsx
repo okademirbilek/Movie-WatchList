@@ -5,6 +5,9 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  sendPasswordResetEmail,
+  updateEmail,
+  updatePassword,
 } from "firebase/auth";
 
 const AuthContext = createContext();
@@ -29,6 +32,17 @@ function AuthProvider({ children }) {
     return signOut(auth);
   }
 
+  function resetPassword(email) {
+    return sendPasswordResetEmail(auth, email);
+  }
+
+  function updateEmailUser(email) {
+    return updateEmail(auth.currentUser, email);
+  }
+  function updatePasswordUser(password) {
+    return updatePassword(auth.currentUser, password);
+  }
+
   useEffect(() => {
     //when ever we call the createUserWithEmailAndPassword its gonna set
     //user for us
@@ -47,6 +61,9 @@ function AuthProvider({ children }) {
     signup,
     login,
     logout,
+    resetPassword,
+    updateEmailUser,
+    updatePasswordUser,
   };
   return (
     <AuthContext.Provider value={value}>

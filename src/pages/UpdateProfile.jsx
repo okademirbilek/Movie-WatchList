@@ -2,34 +2,42 @@ import React, { useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-export default function SignUp() {
-  const [signUpFormData, setSignUpFormData] = useState({
-    email: "",
+export default function UpdateProfile() {
+  const { currentUser, updateEmailUser, updatePasswordUser } = useAuth();
+  const [updateFormData, setUpdateFormData] = useState({
+    email: currentUser.email,
     password: "",
     passwordConfirm: "",
   });
   //signup function from useAuth context (email, password)
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
-  const { signup } = useAuth();
 
-  //   const location = useLocation();
   const navigate = useNavigate();
 
-  //   const from = location.state?.from || "/";
-
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    if (signUpFormData.password !== signUpFormData.passwordConfirm) {
+    if (updateFormData.password !== updateFormData.passwordConfirm) {
       return setError("Passwords do not match");
     }
 
-    await signup(signUpFormData.email, signUpFormData.password)
-      .then((user) => {
-        navigate("/login", { replace: true });
+    const promises = [];
+    setStatus("idle");
+    setError("");
+
+    if (updateFormData.email !== currentUser.email) {
+      promises.push(updateEmailUser(updateFormData.email));
+    }
+    if (updateFormData.password) {
+      promises.push(updatePasswordUser(updateFormData.password));
+    }
+
+    Promise.all(promises)
+      .then(() => {
+        navigate("/dashboard");
       })
-      .catch((error) => {
-        setError("Failed to create an account");
+      .catch(() => {
+        setError("Failed to update account");
       })
       .finally(() => {
         setStatus("idle");
@@ -38,7 +46,7 @@ export default function SignUp() {
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setSignUpFormData((prev) => ({
+    setUpdateFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -46,14 +54,14 @@ export default function SignUp() {
 
   return (
     <div className="login-container">
-      <h1>Sign up</h1>
+      <h1>Update Profile</h1>
       <form onSubmit={handleSubmit} className="login-form">
         <input
           name="email"
           onChange={handleChange}
           type="email"
           placeholder="Email address"
-          value={signUpFormData.email}
+          value={updateFormData.email}
           required
         />
 
@@ -61,25 +69,23 @@ export default function SignUp() {
           name="password"
           onChange={handleChange}
           type="password"
-          placeholder="Password"
-          value={signUpFormData.password}
-          required
+          placeholder="Leave blank to keep the same"
+          value={updateFormData.password}
         />
         <input
           name="passwordConfirm"
           onChange={handleChange}
           type="password"
-          placeholder="Confirm password "
-          value={signUpFormData.passwordConfirm}
-          required
+          placeholder="Leave blank to keep the same"
+          value={updateFormData.passwordConfirm}
         />
         {error && <h3 className="login-error">{error}</h3>}
         <button disabled={status === "submitting"}>
-          {status === "submitting" ? "Signing up..." : "Sign up"}
+          {status === "submitting" ? "Updating..." : "Update"}
         </button>
       </form>
       <div>
-        Already have an account? <Link to="/login"> Sign In </Link>
+        <Link to="/dashboard"> Cancel </Link>
       </div>
     </div>
   );

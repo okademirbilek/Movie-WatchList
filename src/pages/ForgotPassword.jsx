@@ -2,35 +2,28 @@ import React, { useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-export default function Login() {
+export default function ForgotPassword() {
   const [loginFormData, setLoginFormData] = useState({
     email: "",
-    password: "",
   });
-  const [status, setStatus] = React.useState("idle");
-  const [error, setError] = React.useState(null);
-  const { login } = useAuth();
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
+  const [message, setMessage] = useState("");
+  const { resetPassword } = useAuth();
 
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+    setMessage("");
     setError("");
     setStatus("submitting");
-    await login(loginFormData.email, loginFormData.password)
+    await resetPassword(loginFormData.email)
       .then((user) => {
-        // console.log(user);
-        // console.log("looggedin");
-        navigate("/", { replace: true });
+        setMessage("Check your inbox for further instructions");
       })
       .catch((error) => {
-        const errorString = error.message
-          .split("/")[1]
-          .slice(0, -2)
-          .split("-")
-          .join(" ");
-        setError(`Failed to log in : ${errorString} `);
+        setError("Failed to reset password");
       })
       .finally(() => {
         setStatus("idle");
@@ -47,7 +40,7 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <h1>Sign in to your account</h1>
+      <h1>Reset your password</h1>
       <form onSubmit={handleSubmit} className="login-form">
         <input
           name="email"
@@ -57,24 +50,14 @@ export default function Login() {
           value={loginFormData.email}
           required
         />
-        <input
-          name="password"
-          onChange={handleChange}
-          type="password"
-          placeholder="Password"
-          value={loginFormData.password}
-          required
-        />
         {error && <h3 className="login-error">{error}</h3>}
         <button disabled={status === "submitting"}>
-          {status === "submitting" ? "Logging in..." : "Log In"}
+          {status === "submitting" ? "waiting..." : "Reset Password"}
         </button>
+        {message && <h3>{message}</h3>}
       </form>
       <div>
-        <Link to="/forgot-password"> Forgot Password? </Link>
-      </div>
-      <div>
-        Don’t have an account? <Link to="/sign-up"> Sign Up </Link>
+        <Link to="/login"> Sign In </Link>
       </div>
     </div>
   );
