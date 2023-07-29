@@ -12,11 +12,11 @@ function SearchBar({ setIsShown, setCurrentMovieName, setCurrentPage }) {
     event.preventDefault();
     setIsShown(true);
     setCurrentPage(0);
-    console.log(query);
+    // console.log(query);
 
     const cakir = encodeURI(query);
     const queryForApi = cakir.split("%20").join("+");
-    console.log(queryForApi);
+    // console.log(queryForApi);
     setCurrentMovieName(queryForApi);
   };
 

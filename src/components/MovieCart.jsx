@@ -1,6 +1,5 @@
-import { useContext } from "react";
-import { Context } from "../Context";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function MovieCart({
   filmData,
@@ -9,16 +8,20 @@ function MovieCart({
   wantSpace = false,
   detailPage = true,
 }) {
-  const { watchList } = useContext(Context);
+  // const { watchList } = useContext(Context);
+  const { movieData } = useAuth();
   //check if the film already in the watchlist
   let isExist = null;
   if (btnId === "add-btn") {
-    isExist = watchList.some(
+    isExist = movieData.some(
       (filmList) => filmList["imdbID"] === filmData.imdbID
+      // (filmList) => filmList["id"] === filmData.id
     );
   }
 
-  const detail = btnId === "add-btn" ? filmData : filmData.imdbID;
+  // console.log(isExist);
+
+  const detail = btnId === "add-btn" ? filmData : filmData.id;
 
   return (
     <>

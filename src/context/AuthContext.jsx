@@ -1,5 +1,13 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
-import { auth } from "../firebase";
+import { enqueueSnackbar } from "notistack";
+import { auth, db } from "../firebase";
+import {
+  onSnapshot,
+  addDoc,
+  collection,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -17,6 +25,7 @@ function useAuth() {
 }
 
 function AuthProvider({ children }) {
+  const [movieData, setMovieData] = useState([]);
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -56,6 +65,48 @@ function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
 
+  const moviesCollection = collection(db, `${currentUser?.uid}`);
+  useEffect(() => {
+    const unsubscribedb = onSnapshot(moviesCollection, function (snapshot) {
+      // Sync up our local notes array with the snapshot data
+      const movieArr = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setMovieData(movieArr);
+    });
+    return unsubscribedb;
+  }, [currentUser]);
+
+  async function addNewMovie(movieobj) {
+    let isExist = movieData.some(
+      (filmList) => filmList["imdbID"] === movieobj.imdbID
+    );
+    let message = isExist ? "Already in watchlist" : "Added to watchlist";
+    let variant = isExist ? "error" : "success";
+    let snackbar = enqueueSnackbar(message, {
+      anchorOrigin: { vertical: "bottom", horizontal: "right" },
+      variant: variant,
+    });
+    if (isExist) {
+      snackbar;
+    } else {
+      await addDoc(moviesCollection, { ...movieobj, updatedAt: Date.now() });
+      snackbar;
+    }
+  }
+
+  async function deleteMovie(id) {
+    const docRef = doc(db, `${currentUser?.uid}`, id);
+    await deleteDoc(docRef);
+    enqueueSnackbar("Removed from watchlist", {
+      anchorOrigin: { vertical: "bottom", horizontal: "right" },
+      variant: "info",
+    });
+  }
+
+  /************************************** Firebase Collection****************************************** */
+
   const value = {
     currentUser,
     signup,
@@ -64,6 +115,9 @@ function AuthProvider({ children }) {
     resetPassword,
     updateEmailUser,
     updatePasswordUser,
+    addNewMovie,
+    movieData,
+    deleteMovie,
   };
   return (
     <AuthContext.Provider value={value}>

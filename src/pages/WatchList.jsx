@@ -1,18 +1,18 @@
-import { useContext } from "react";
-import { Context } from "../Context";
 import { Link } from "react-router-dom";
-// import WatchListCart from "../components/WatchListCart";
 import MovieCart from "../components/MovieCart";
+import { useAuth } from "../context/AuthContext";
 
 function WatchList() {
-  const { removeFromWachList, watchList } = useContext(Context);
+  const { movieData, deleteMovie } = useAuth();
 
-  const watchListElement = watchList.map((movie) => {
+  const sortedMovieData = movieData.sort((a, b) => b.updatedAt - a.updatedAt);
+
+  const watchListElement = sortedMovieData.map((movie) => {
     return (
       <MovieCart
         key={movie.imdbID}
         filmData={movie}
-        onClick={removeFromWachList}
+        onClick={deleteMovie}
         btnId="remove-btn"
         wantSpace={true}
       />
@@ -21,7 +21,7 @@ function WatchList() {
 
   return (
     <>
-      {watchList.length === 0 ? (
+      {movieData.length === 0 ? (
         <div className="empty-watchlist">
           <p className="watchlist-text">
             Your watchlist is looking a little empty...

@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import useFetch from "../hooks/useFetch";
 import MovieCart from "./MovieCart.jsx";
 
-import { Context } from "../Context";
+import { useAuth } from "../context/AuthContext";
+
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
 function PaginatedItems({
@@ -12,7 +13,7 @@ function PaginatedItems({
   currentPage,
   focusDiv,
 }) {
-  const { addToWatchList } = useContext(Context);
+  const { addNewMovie } = useAuth();
 
   const { loading, error, value } = useFetch(
     `https://omdbapi.com/?apikey=${apiKey}&s=${currentMovieName}&page=${
@@ -55,7 +56,8 @@ function PaginatedItems({
             <MovieCart
               key={filmData.imdbID}
               filmData={filmData}
-              onClick={addToWatchList}
+              onClick={addNewMovie}
+              // onClick={addToWatchList}
               btnId="add-btn"
               wantSpace={true}
             />
