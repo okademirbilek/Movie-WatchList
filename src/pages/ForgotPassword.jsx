@@ -23,7 +23,7 @@ export default function ForgotPassword() {
         setMessage("Check your inbox for further instructions");
       })
       .catch((error) => {
-        setError("Failed to reset password");
+        setError("Failed to reset password : Email not found");
       })
       .finally(() => {
         setStatus("idle");
@@ -41,7 +41,7 @@ export default function ForgotPassword() {
   return (
     <div className="login-container">
       <h1>Reset your password</h1>
-      <form onSubmit={handleSubmit} className="login-form">
+      <form onSubmit={handleSubmit} className="reset-form">
         <input
           name="email"
           onChange={handleChange}
@@ -50,7 +50,11 @@ export default function ForgotPassword() {
           value={loginFormData.email}
           required
         />
-        {error && <h3 className="login-error">{error}</h3>}
+        {error && (
+          <div className="alert">
+            <h3 className="login-error">{error}</h3>
+          </div>
+        )}
         <button disabled={status === "submitting"}>
           {status === "submitting" ? "waiting..." : "Reset Password"}
         </button>

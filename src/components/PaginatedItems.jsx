@@ -50,6 +50,7 @@ function PaginatedItems({
 
   return (
     <>
+      <h2>Searched Movie Results</h2>
       {value &&
         value.Search.map((filmData) => {
           return (

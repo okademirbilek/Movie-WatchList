@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import MovieCart from "../components/MovieCart";
 
@@ -10,7 +10,6 @@ const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
 export default function MovieDetails() {
   const params = useParams();
-  console.log(params);
 
   const { addToWatchList } = useContext(Context);
 

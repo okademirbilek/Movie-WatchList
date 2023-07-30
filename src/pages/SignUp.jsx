@@ -73,7 +73,11 @@ export default function SignUp() {
           value={signUpFormData.passwordConfirm}
           required
         />
-        {error && <h3 className="login-error">{error}</h3>}
+        {error && (
+          <div className="alert">
+            <h3 className="login-error">{error}</h3>
+          </div>
+        )}
         <button disabled={status === "submitting"}>
           {status === "submitting" ? "Signing up..." : "Sign up"}
         </button>

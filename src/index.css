@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -17,7 +18,8 @@ body {
   --header-right: #bc48ff;
   --text: white;
   --main: #2e2e2f;
-  --popular-movie: #2c3031;
+  /* --popular-movie: #2c3031; */
+  --popular-movie: #363636;
 }
 
 /************************ header ************************/
@@ -905,14 +907,16 @@ footer {
   gap: 1em;
 }
 
-.login-form {
+.login-form,
+.reset-form {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 500px;
 }
 
-.login-form > input {
+.login-form > input,
+.reset-form > input {
   border: 1px solid rgba(209, 213, 219);
   height: 40px;
   text-indent: 10px;
@@ -921,7 +925,8 @@ footer {
   font-weight: 400;
 }
 
-.login-form > input:focus {
+.login-form > input:focus,
+.reset-form > input:focus {
   outline: none;
 }
 
@@ -934,7 +939,12 @@ footer {
   border-top: none;
 }
 
-.login-form > button {
+.reset-form > input {
+  border-radius: 6px;
+}
+
+.login-form > button,
+.reset-form > button {
   background-color: #ff8c38;
   border: none;
   border-radius: 6px;
@@ -950,11 +960,29 @@ footer {
   cursor: not-allowed;
 }
 
+/* The alert message box */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7em;
+  background-color: #ea564b; /* Red */
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+/* The close button */
 .login-error {
-  color: red;
-  font-size: 1rem;
-  text-align: center;
-  margin-top: 0.5em;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .login-error {
+    font-size: 22px;
+  }
 }
 
 /******************************** Dashboard *********************************/
@@ -964,16 +992,22 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1660054908248-940a627c0254?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjMxMDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI4OTMwNzY&ixlib=rb-1.2.1&q=80&w=1600");
 }
 .profile-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid white;
+  /* border: 1px solid white; */
+  color: black;
   width: 70%;
   height: 80%;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.225);
 }
 
 .profile-container > button {

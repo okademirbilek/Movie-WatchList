@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
@@ -20,8 +20,6 @@ export default function Login() {
     setStatus("submitting");
     await login(loginFormData.email, loginFormData.password)
       .then((user) => {
-        // console.log(user);
-        // console.log("looggedin");
         navigate("/", { replace: true });
       })
       .catch((error) => {
@@ -65,7 +63,11 @@ export default function Login() {
           value={loginFormData.password}
           required
         />
-        {error && <h3 className="login-error">{error}</h3>}
+        {error && (
+          <div className="alert">
+            <h3 className="login-error">{error}</h3>
+          </div>
+        )}
         <button disabled={status === "submitting"}>
           {status === "submitting" ? "Logging in..." : "Log In"}
         </button>
