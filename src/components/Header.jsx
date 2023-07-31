@@ -1,8 +1,22 @@
 import { Link } from "react-router-dom";
 import WatchListIcon from "../images/icons8-popcorn-4.png";
 import avatar from "../images/avatar-img.png";
+import { useAuth } from "../context/AuthContext";
+import { useLocation } from "react-router-dom";
 
 function Header() {
+  const { currentUser } = useAuth();
+  const location = useLocation();
+
+  //if there is no user and your path is not defined and pathname update-profile
+  if (
+    !currentUser ||
+    location.key === "default" ||
+    location.pathname === "/update-profile"
+  ) {
+    return null;
+  }
+
   return (
     <header id="header">
       <Link to="/">

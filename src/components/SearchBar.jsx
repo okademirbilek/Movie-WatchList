@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function SearchBar({ setIsShown, setCurrentMovieName, setCurrentPage }) {
+function SearchBar({ setCurrentMovieName, setSearchParams }) {
   const [query, setQuery] = useState("");
 
   function handleChange(event) {
@@ -8,16 +9,15 @@ function SearchBar({ setIsShown, setCurrentMovieName, setCurrentPage }) {
     setQuery(value);
   }
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsShown(true);
-    setCurrentPage(0);
-    // console.log(query);
 
     const cakir = encodeURI(query);
     const queryForApi = cakir.split("%20").join("+");
-    // console.log(queryForApi);
     setCurrentMovieName(queryForApi);
+    navigate(`/search/${queryForApi}/${1}`);
   };
 
   return (

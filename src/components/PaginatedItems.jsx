@@ -3,29 +3,47 @@ import ReactPaginate from "react-paginate";
 import useFetch from "../hooks/useFetch";
 import MovieCart from "./MovieCart.jsx";
 
+import { useOutletContext } from "react-router-dom";
+
 import { useAuth } from "../context/AuthContext";
+
+import useEffectOnUpdate from "../hooks/useEffectOnUpdate";
+
+import { useParams } from "react-router-dom";
 
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
-function PaginatedItems({
-  currentMovieName,
-  setCurrentPage,
-  currentPage,
-  focusDiv,
-}) {
+import { useNavigate } from "react-router-dom";
+
+function PaginatedItems() {
   const { addNewMovie } = useAuth();
+  const { currentMovieName, setCurrentMovieName, focusDiv } =
+    useOutletContext();
+  const params = useParams();
+  const [currentPage, setCurrentPage] = useState(params.page);
+
+  const navigate = useNavigate();
+
+  useEffectOnUpdate(() => {
+    setCurrentPage(params.page);
+  }, [params.page]);
+
+  useEffect(() => {
+    setCurrentMovieName(params.movie);
+  }, [params.movie]);
 
   const { loading, error, value } = useFetch(
-    `https://omdbapi.com/?apikey=${apiKey}&s=${currentMovieName}&page=${
-      currentPage + 1
-    }&type=movie`,
+    `https://omdbapi.com/?apikey=${apiKey}&s=${
+      params?.movie || currentMovieName
+    }&page=${params?.page || currentPage}&type=movie`,
     {},
-    [currentMovieName, currentPage]
+    [params.movie, params.page]
   );
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-    setCurrentPage(event.selected);
+    setCurrentPage(event.selected + 1);
+    navigate(`/search/${params.movie}/${event.selected + 1}`);
     focusDiv.current.scrollIntoView();
   };
 
@@ -77,106 +95,10 @@ function PaginatedItems({
         previousLinkClassName="page-num"
         nextLinkClassName="page-num"
         activeLinkClassName="active"
-        initialPage={currentPage}
+        forcePage={currentPage - 1}
       />
     </>
   );
 }
 
 export default PaginatedItems;
-
-// import React, { useEffect, useState, useContext } from "react";
-// import ReactPaginate from "react-paginate";
-// import useFetch from "../hooks/useFetch";
-// import MovieCart from "./MovieCart.jsx";
-
-// import { Context } from "../Context";
-
-// const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
-
-// function PaginatedItems({
-//   currentMovieName,
-//   setCurrentPage,
-//   currentPage,
-//   focusDiv,
-// }) {
-//   const [currentItems, setCurrentItems] = useState([]);
-//   const [pageCount, setPageCount] = useState(0);
-
-//   const { addToWatchList } = useContext(Context);
-
-//   const { loading, error, value } = useFetch(
-//     `https://omdbapi.com/?apikey=${apiKey}&s=${currentMovieName}&page=${
-//       currentPage + 1
-//     }&type=movie`,
-//     {},
-//     [currentMovieName, currentPage]
-//   );
-
-//   useEffect(() => {
-//     // console.log("2.useeffect calıstı");
-//     if (loading === false) {
-//       if (value.Response === "True") {
-//         const filmPage = value.Search.map((filmData) => {
-//           return (
-//             <MovieCart
-//               key={filmData.imdbID}
-//               filmData={filmData}
-//               onClick={addToWatchList}
-//               btnId="add-btn"
-//               wantSpace={true}
-//             />
-//           );
-//         });
-//         setCurrentItems(filmPage);
-//         // console.log("filmpage", filmPage);
-//         const numberOfPage = Math.ceil(value.totalResults / 10);
-//         setPageCount(numberOfPage);
-//         // console.log("numberofpage", numberOfPage);
-//       } else if (value.Response === "False") {
-//         let errorMsg = (
-//           <div className="error-msg">
-//             <h5>
-//               Unable to find what you’re looking for Please try another search
-//             </h5>
-//           </div>
-//         );
-//         setCurrentItems(errorMsg);
-//       }
-//     }
-//   }, [currentPage, currentMovieName, loading]);
-
-//   // Invoke when user click to request another page.
-//   const handlePageClick = (event) => {
-//     setCurrentPage(event.selected);
-//     focusDiv.current.scrollIntoView();
-//   };
-
-//   //error handling
-//   if (error) {
-//     return error;
-//   }
-
-//   return (
-//     <>
-//       {currentItems}
-//       <ReactPaginate
-//         breakLabel="..."
-//         nextLabel="Next >"
-//         onPageChange={handlePageClick}
-//         pageRangeDisplayed={5}
-//         pageCount={pageCount}
-//         previousLabel="< Previous"
-//         renderOnZeroPageCount={null}
-//         containerClassName="pagination"
-//         pageLinkClassName="page"
-//         previousLinkClassName="page-num"
-//         nextLinkClassName="page-num"
-//         activeLinkClassName="active"
-//         forcePage={currentPage}
-//       />
-//     </>
-//   );
-// }
-
-// export default PaginatedItems;
