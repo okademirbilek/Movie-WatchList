@@ -6,17 +6,26 @@ import SlickSlider from "../components/SlickSlider.jsx";
 
 import { Outlet } from "react-router-dom";
 
+import { useLocation } from "react-router-dom";
+
 function Home() {
   const [currentMovieName, setCurrentMovieName] = useState("");
 
   const focusDiv = useRef(null);
 
+  const location = useLocation();
+  // console.log(location);
+
   return (
     <>
-      <SearchBar setCurrentMovieName={setCurrentMovieName} />
-      <div className="carousel" ref={focusDiv}>
-        <SlickSlider />
-      </div>
+      {location.key !== "default" ? (
+        <>
+          <SearchBar setCurrentMovieName={setCurrentMovieName} />
+          <div className="carousel" ref={focusDiv}>
+            <SlickSlider />
+          </div>
+        </>
+      ) : null}
 
       <main id="main">
         <Outlet

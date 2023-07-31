@@ -20,12 +20,19 @@ function PaginatedItems() {
   const { currentMovieName, setCurrentMovieName, focusDiv } =
     useOutletContext();
   const params = useParams();
-  const [currentPage, setCurrentPage] = useState(params.page);
+  const [currentPage, setCurrentPage] = useState(parseInt(params?.page));
 
   const navigate = useNavigate();
 
   useEffectOnUpdate(() => {
-    setCurrentPage(params.page);
+    if (isNaN(parseInt(params.page))) {
+      alert("bırak lan path ile oynamayı");
+      navigate(`/`);
+      setCurrentPage(1);
+    } else {
+      console.log();
+      setCurrentPage(parseInt(params.page));
+    }
   }, [params.page]);
 
   useEffect(() => {
@@ -53,7 +60,7 @@ function PaginatedItems() {
 
   if (value) {
     if (value.Response === "False") {
-      return <h1 className="error-msg">Error: {value.Error}</h1>;
+      return <h1 className="error-msg">{value.Error}</h1>;
     }
   }
 
