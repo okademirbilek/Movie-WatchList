@@ -18,7 +18,8 @@ function Home() {
 
   return (
     <>
-      {location.key !== "default" ? (
+      {(location.key !== "default" && location.pathname === "/") ||
+      location.key !== "default" ? (
         <>
           <SearchBar setCurrentMovieName={setCurrentMovieName} />
           <div className="carousel" ref={focusDiv}>

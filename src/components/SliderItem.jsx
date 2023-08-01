@@ -8,7 +8,8 @@ const SliderItem = ({ movie }) => {
   const styles = isShown
     ? {
         boxShadow: "0px 0px 30px 0px white",
-        opacity: 0.5,
+        opacity: 0.6,
+        transform: "scale(1.1)",
       }
     : {};
 

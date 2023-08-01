@@ -19,6 +19,9 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <div className="profile-container">
+        {/* <div className="box">
+          <div className="box2"></div>
+        </div> */}
         <h1>Profile</h1>
         <h2>{currentUser.email}</h2>
         {error && <h2>{error}</h2>}

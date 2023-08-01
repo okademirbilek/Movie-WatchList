@@ -79,7 +79,11 @@ export default function UpdateProfile() {
           placeholder="Leave blank to keep the same"
           value={updateFormData.passwordConfirm}
         />
-        {error && <h3 className="login-error">{error}</h3>}
+        {error && (
+          <div className="alert">
+            <h3 className="login-error">{error}</h3>
+          </div>
+        )}
         <button disabled={status === "submitting"}>
           {status === "submitting" ? "Updating..." : "Update"}
         </button>
