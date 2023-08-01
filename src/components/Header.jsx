@@ -11,8 +11,8 @@ function Header() {
   //if there is no user and your path is not defined and pathname update-profile
   if (
     !currentUser ||
-    location.key === "default" ||
-    location.pathname === "/update-profile"
+    location.pathname === "/update-profile" ||
+    (location.key === "default" && location.pathname !== "/")
   ) {
     return null;
   }
