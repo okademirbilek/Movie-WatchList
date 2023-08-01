@@ -903,12 +903,109 @@ hr {
   }
 }
 
-/* MovieDetailsPAge */
+/************************************* MovieDetailsPAge************************** */
 
+.movie-detail-container {
+  position: relative;
+}
 .video-container {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
+  width: 90%;
+  height: 80vh;
+  margin: 0 auto;
+  margin-bottom: 1.5em;
+}
+
+.trailer {
+  display: flex;
+  justify-content: center;
+  font-size: var(--mediumFontM);
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+  width: 15vw;
+  padding: 10px;
+  border: 1px solid white;
+  text-align: center;
+  border-radius: 10px;
+}
+.trailer:hover {
+  background-color: var(--header-left);
+  cursor: pointer;
+}
+
+.trailer-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  height: 70vh;
+  z-index: 1;
+  background-color: black;
+  cursor: pointer;
+}
+.trailer-container > iframe {
+  position: relative;
+}
+
+/* CloseButton */
+.close-container {
+  position: absolute;
+  top: -1em;
+  right: -1em;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.leftright {
+  height: 4px;
+  width: 30px;
+  position: absolute;
+  background-color: #f4a259;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in;
+  border: 1px solid var(--header-right);
+}
+
+.rightleft {
+  height: 4px;
+  width: 30px;
+  position: absolute;
+  background-color: #f4a259;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all 0.3s ease-in;
+  border: 1px solid var(--header-right);
+}
+
+label {
+  color: white;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in;
+  opacity: 0;
+}
+.close {
+  margin-top: 15px;
+  position: absolute;
+}
+
+.close-container:hover .leftright {
+  transform: rotate(-45deg);
+  background-color: #f25c66;
+}
+.close-container:hover .rightleft {
+  transform: rotate(45deg);
+  background-color: #f25c66;
+}
+.close-container:hover label {
+  opacity: 1;
 }
 
 /* footer */
@@ -1106,7 +1203,7 @@ footer {
   cursor: not-allowed;
 }
 
-.box {
+/* .box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1144,4 +1241,4 @@ footer {
   100% {
     transform: rotate(360deg);
   }
-}
+} */

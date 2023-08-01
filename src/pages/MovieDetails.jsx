@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieCart from "../components/MovieCart";
 
@@ -9,6 +9,7 @@ import { Context } from "../Context";
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
 export default function MovieDetails() {
+  const [onToggle, setOnToggle] = useState(false);
   const params = useParams();
 
   const { addToWatchList } = useContext(Context);
@@ -38,6 +39,10 @@ export default function MovieDetails() {
     );
   }
 
+  function hanleClick() {
+    setOnToggle((prevToggle) => !prevToggle);
+  }
+
   return (
     <div className="movie-detail-container">
       <>
@@ -47,6 +52,37 @@ export default function MovieDetails() {
           btnId="add-btn"
           detailPage={false}
         />
+        <div className="trailer" onClick={() => hanleClick()}>
+          Watch Trailer
+        </div>
+        <div className="video-container ">
+          <iframe
+            src={`https://autoembed.to/movie/imdb/${params?.id}`}
+            width="100%"
+            height="100%"
+            // frameborder="0"
+            title=""
+            allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+        {onToggle === true ? (
+          <div className="trailer-container">
+            <div onClick={() => setOnToggle(false)} class="close-container">
+              <div class="leftright"></div>
+              <div class="rightleft"></div>
+              <label class="close">close</label>
+            </div>
+            <iframe
+              src={`https://autoembed.to/trailer/movie/${params?.id}`}
+              width="100%"
+              height="100%"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </div>
+        ) : null}
       </>
     </div>
   );

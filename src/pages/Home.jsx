@@ -18,7 +18,7 @@ function Home() {
 
   return (
     <>
-      {(location.key !== "default" && location.pathname === "/") ||
+      {(location.key === "default" && location.pathname === "/") ||
       location.key !== "default" ? (
         <>
           <SearchBar setCurrentMovieName={setCurrentMovieName} />
