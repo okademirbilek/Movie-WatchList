@@ -9,9 +9,13 @@ function Header() {
   const location = useLocation();
 
   //if there is no user and your path is not defined and pathname update-profile
+  //currentUser already handle the conditional render but incase i add the extra path
   if (
     !currentUser ||
     location.pathname === "/update-profile" ||
+    location.pathname === "/sign-up" ||
+    location.pathname === "/login" ||
+    location.pathname === "/forgot-password" ||
     (location.key === "default" && location.pathname !== "/")
   ) {
     return null;

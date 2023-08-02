@@ -56,6 +56,9 @@ export default function UpdateProfile() {
     <div className="login-container">
       <h1>Update Profile</h1>
       <form onSubmit={handleSubmit} className="login-form">
+        <label className="label-input" htmlFor="email">
+          Email
+        </label>
         <input
           name="email"
           onChange={handleChange}
@@ -64,14 +67,20 @@ export default function UpdateProfile() {
           value={updateFormData.email}
           required
         />
-
+        <label className="label-input" htmlFor="password">
+          Password
+        </label>
         <input
+          id="password"
           name="password"
           onChange={handleChange}
           type="password"
           placeholder="Leave blank to keep the same"
           value={updateFormData.password}
         />
+        <label className="label-input" htmlFor="passwordConfirm">
+          Password Confirm
+        </label>
         <input
           name="passwordConfirm"
           onChange={handleChange}

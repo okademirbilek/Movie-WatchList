@@ -4,7 +4,7 @@ import MovieCart from "../components/MovieCart";
 
 import useFetch from "../hooks/useFetch";
 
-import { Context } from "../Context";
+import { useAuth } from "../context/AuthContext";
 
 const apiKey = import.meta.env.VITE_REACT_APP_OMDB_KEY;
 
@@ -12,7 +12,7 @@ export default function MovieDetails() {
   const [onToggle, setOnToggle] = useState(false);
   const params = useParams();
 
-  const { addToWatchList } = useContext(Context);
+  const { addNewMovie } = useAuth();
 
   const { loading, error, value } = useFetch(
     `https://omdbapi.com/?apikey=${apiKey}&i=${params.id}&plot=short`,
@@ -48,7 +48,7 @@ export default function MovieDetails() {
       <>
         <MovieCart
           filmData={value}
-          onClick={addToWatchList}
+          onClick={addNewMovie}
           btnId="add-btn"
           detailPage={false}
         />
@@ -69,9 +69,9 @@ export default function MovieDetails() {
         {onToggle === true ? (
           <div className="trailer-container">
             <div onClick={() => setOnToggle(false)} class="close-container">
-              <div class="leftright"></div>
-              <div class="rightleft"></div>
-              <label class="close">close</label>
+              <div className="leftright"></div>
+              <div className="rightleft"></div>
+              <label className="close">close</label>
             </div>
             <iframe
               src={`https://autoembed.to/trailer/movie/${params?.id}`}
