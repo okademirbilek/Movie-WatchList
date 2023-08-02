@@ -21,7 +21,7 @@ const SliderItem = ({ movie }) => {
     >
       <img className="carousel-img" style={styles} src={movie.img}></img>
       <h6 className="movie-year">{movie.year}</h6>
-      <h6 className="movie-icon">⭐</h6>
+      {/* <h6 className="movie-icon">⭐</h6> */}
       <h6 className="movie-star">9.7</h6>
       {isShown && (
         <Link to={`/details/${movie.id}`}>
