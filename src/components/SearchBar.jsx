@@ -33,6 +33,7 @@ function SearchBar({ setCurrentMovieName, setSearchParams }) {
             value={query}
             required
             minLength={3}
+            className="film-input"
           ></input>
         </div>
         <button id="search-btn" type="submit">

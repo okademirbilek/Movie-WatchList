@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 function WatchList() {
   const { movieData, deleteMovie } = useAuth();
 
+  //we could copy of that movie data and the sort if you dont want to modify movie data
   const sortedMovieData = movieData.sort((a, b) => b.updatedAt - a.updatedAt);
 
   const watchListElement = sortedMovieData.map((movie) => {

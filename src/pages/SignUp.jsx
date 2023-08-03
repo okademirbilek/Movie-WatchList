@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Icon from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
 export default function SignUp() {
   const [signUpFormData, setSignUpFormData] = useState({
@@ -9,6 +12,7 @@ export default function SignUp() {
     passwordConfirm: "",
   });
   //signup function from useAuth context (email, password)
+  const [inputType, setInputType] = useState("password");
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
   const { signup } = useAuth();
@@ -57,18 +61,40 @@ export default function SignUp() {
           required
         />
 
-        <input
-          name="password"
-          onChange={handleChange}
-          type="password"
-          placeholder="Password"
-          value={signUpFormData.password}
-          required
-        />
+        <div className="input-with-icon">
+          <input
+            name="password"
+            onChange={handleChange}
+            type={inputType}
+            placeholder="Password"
+            value={signUpFormData.password}
+            minLength={6}
+            required
+            className="custom-input"
+          />
+          {inputType === "password" ? (
+            <Icon
+              icon={eyeOff}
+              onClick={() => setInputType("text")}
+              className="icon-comp"
+              size={25}
+              style={{ display: "flex" }}
+            />
+          ) : (
+            <Icon
+              icon={eye}
+              onClick={() => setInputType("password")}
+              className="icon-comp"
+              size={25}
+              style={{ display: "flex" }}
+            />
+          )}
+        </div>
+
         <input
           name="passwordConfirm"
           onChange={handleChange}
-          type="password"
+          type={inputType}
           placeholder="Confirm password "
           value={signUpFormData.passwordConfirm}
           required
