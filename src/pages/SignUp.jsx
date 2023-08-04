@@ -6,13 +6,14 @@ import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 
 export default function SignUp() {
+  const [inputType, setInputType] = useState("password");
   const [signUpFormData, setSignUpFormData] = useState({
     email: "",
     password: "",
     passwordConfirm: "",
   });
   //signup function from useAuth context (email, password)
-  const [inputType, setInputType] = useState("password");
+
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
   const { signup } = useAuth();

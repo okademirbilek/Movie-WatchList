@@ -12,8 +12,8 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const [status, setStatus] = React.useState("idle");
-  const [error, setError] = React.useState(null);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
   const { login } = useAuth();
 
   const navigate = useNavigate();
@@ -65,7 +65,7 @@ export default function Login() {
           <input
             name="password"
             onChange={handleChange}
-            type="password"
+            type={inputType}
             placeholder="Password"
             value={loginFormData.password}
             minLength={6}
