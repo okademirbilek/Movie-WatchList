@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SearchBar({ setCurrentMovieName, setSearchParams }) {
+function SearchBar({ setCurrentMovieName, focusDiv }) {
   const [query, setQuery] = useState("");
 
   function handleChange(event) {
@@ -18,6 +18,7 @@ function SearchBar({ setCurrentMovieName, setSearchParams }) {
     const queryForApi = cakir.split("%20").join("+");
     setCurrentMovieName(queryForApi);
     navigate(`/search/${queryForApi}/${1}`);
+    focusDiv.current.scrollIntoView();
   };
 
   return (

@@ -21,7 +21,10 @@ function Home() {
       {(location.key === "default" && location.pathname === "/") ||
       location.key !== "default" ? (
         <>
-          <SearchBar setCurrentMovieName={setCurrentMovieName} />
+          <SearchBar
+            setCurrentMovieName={setCurrentMovieName}
+            focusDiv={focusDiv}
+          />
           <div className="carousel" ref={focusDiv}>
             <SlickSlider />
           </div>
