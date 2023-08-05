@@ -54,6 +54,7 @@ export default function Dashboard() {
               type="text"
               value={userName}
               id="userName"
+              maxLength={15}
             />
             <button className="username-btn">Save</button>
           </div>

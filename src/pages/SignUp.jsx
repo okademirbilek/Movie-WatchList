@@ -70,6 +70,7 @@ export default function SignUp() {
             placeholder="Password"
             value={signUpFormData.password}
             minLength={6}
+            maxLength={40}
             required
             className="custom-input"
           />
@@ -98,6 +99,7 @@ export default function SignUp() {
           type={inputType}
           placeholder="Confirm password "
           value={signUpFormData.passwordConfirm}
+          maxLength={40}
           required
         />
         {error && (

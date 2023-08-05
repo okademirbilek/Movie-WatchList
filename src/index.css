@@ -104,7 +104,7 @@ nav > a:hover {
 
 .avatar-icon {
   width: 40px;
-  /* margin-top: -1.3em; */
+  margin-top: -1.3em;
 }
 .user-link {
   display: flex;
@@ -137,6 +137,9 @@ nav > a:hover {
   html {
     font-size: 24px;
   }
+  nav > a {
+    margin-top: 1em;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -152,6 +155,10 @@ nav > a:hover {
 
   .user-link > h5 {
     font-size: var(--smallFontL);
+    margin-bottom: 0;
+  }
+  .avatar-icon {
+    margin-top: 0;
   }
 }
 
@@ -593,7 +600,7 @@ hr {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   #popular-movies-container {
     grid-template-columns: repeat(2, auto);
     grid-gap: 0.7em;
@@ -1240,6 +1247,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   /* color: black; */
   color: white;
   width: 90%;
