@@ -16,6 +16,7 @@ import {
   sendPasswordResetEmail,
   updateEmail,
   updatePassword,
+  updateProfile,
 } from "firebase/auth";
 
 const AuthContext = createContext();
@@ -50,6 +51,10 @@ function AuthProvider({ children }) {
   }
   function updatePasswordUser(password) {
     return updatePassword(auth.currentUser, password);
+  }
+
+  function updateUserName(userName) {
+    return updateProfile(auth.currentUser, userName);
   }
 
   useEffect(() => {
@@ -118,6 +123,7 @@ function AuthProvider({ children }) {
     addNewMovie,
     movieData,
     deleteMovie,
+    updateUserName,
   };
   return (
     <AuthContext.Provider value={value}>

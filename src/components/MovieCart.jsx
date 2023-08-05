@@ -8,18 +8,14 @@ function MovieCart({
   wantSpace = false,
   detailPage = true,
 }) {
-  // const { watchList } = useContext(Context);
   const { movieData } = useAuth();
   //check if the film already in the watchlist
   let isExist = null;
   if (btnId === "add-btn") {
     isExist = movieData.some(
       (filmList) => filmList["imdbID"] === filmData.imdbID
-      // (filmList) => filmList["id"] === filmData.id
     );
   }
-
-  // console.log(isExist);
 
   const detail = btnId === "add-btn" ? filmData : filmData.id;
 
@@ -53,7 +49,9 @@ function MovieCart({
           </div>
 
           {detailPage ? (
-            <Link to={`/details/${filmData.imdbID}`}>Go to detail page</Link>
+            <div className="detail-link">
+              <Link to={`/details/${filmData.imdbID}`}>Go to detail page</Link>
+            </div>
           ) : null}
 
           <div className="film-genre">
@@ -66,7 +64,7 @@ function MovieCart({
               onClick={() => onClick(detail)}
               disabled={isExist}
             ></button>
-            <h6>Add To Watchlist</h6>
+            <h6>{btnId === "add-btn" ? "Add To" : "Remove from "} Watchlist</h6>
           </div>
         </div>
         <div className="film-plot">
