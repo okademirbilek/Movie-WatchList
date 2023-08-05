@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import { user } from "pg/lib/defaults";
 
 export default function Dashboard() {
   const { currentUser, logout, updateUserName } = useAuth();
-  const [userName, setUserName] = useState("mor");
-  console.log(userName);
+  const [userName, setUserName] = useState(
+    currentUser?.displayName || "MovieStar123"
+  );
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
@@ -21,25 +21,22 @@ export default function Dashboard() {
       });
   }
 
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-  //   setError("");
-  //   await updateUserName({ displayName: userName, photoURL: "" })
-  //     .then(() => {
-  //       console.log("it worked");
-  //     })
-  //     .catch(() => {
-  //       setError("Failed to update userName");
-  //     });
-  // }
+    setError("");
+    await updateUserName({ displayName: userName, photoURL: "" })
+      .then(() => {
+        // console.log("it worked");
+      })
+      .catch(() => {
+        setError("Failed to update userName");
+      });
+  }
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setUserName((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setUserName(value);
   }
 
   return (
@@ -47,17 +44,19 @@ export default function Dashboard() {
       <div className="profile-container">
         <h1>Profile</h1>
         <form onSubmit={handleSubmit} className="reset-form">
-          <label className="label-input" htmlFor="userName">
+          <label className="label-input special" htmlFor="userName">
             Username
           </label>
-          <input
-            name="userName"
-            onChange={handleChange}
-            type="text"
-            // placeholder="Email address"
-            value={userName}
-          />
-          <button onClick={handleSubmit}>save</button>
+          <div className="username-input-div">
+            <input
+              name="userName"
+              onChange={handleChange}
+              type="text"
+              value={userName}
+              id="userName"
+            />
+            <button className="username-btn">Save</button>
+          </div>
         </form>
         <h2>{currentUser.email}</h2>
         {error && <h2>{error}</h2>}

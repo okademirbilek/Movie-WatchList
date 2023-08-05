@@ -36,7 +36,10 @@ function Header() {
           <img src={WatchListIcon} className="popcorn-icon"></img>
         </Link>
         <Link to="/dashboard">
-          <img src={avatar} className="avatar-icon"></img>
+          <div className="user-link">
+            <img src={avatar} className="avatar-icon"></img>
+            <h5>{currentUser.displayName}</h5>
+          </div>
         </Link>
       </nav>
     </header>

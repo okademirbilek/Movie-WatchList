@@ -104,7 +104,18 @@ nav > a:hover {
 
 .avatar-icon {
   width: 40px;
-  margin-top: -1.3em;
+  /* margin-top: -1.3em; */
+}
+.user-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.user-link > h5 {
+  font-size: var(--smallFontL);
+  /* margin-bottom: 1em; */
 }
 
 /*********************** media *********************/
@@ -137,6 +148,10 @@ nav > a:hover {
   }
   nav {
     flex-direction: column;
+  }
+
+  .user-link > h5 {
+    font-size: var(--smallFontL);
   }
 }
 
@@ -1216,7 +1231,7 @@ footer {
 /******************************** Dashboard *********************************/
 
 .dashboard {
-  height: 70vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1236,7 +1251,6 @@ footer {
   font-size: var(--largeFontM);
   color: var(--header-right);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  margin-top: 0.75em;
 }
 .profile-container > h2 {
   margin-top: 0.5em;
@@ -1250,7 +1264,8 @@ footer {
   color: #9905ef;
 }
 
-.profile-container > button {
+.profile-container > button,
+.username-btn {
   /* background-color: #ff8c38; */
   background-color: var(--header-left);
   border: none;
@@ -1262,13 +1277,51 @@ footer {
   cursor: pointer;
   padding: 0 20px;
 }
-.profile-container > button:hover {
+.profile-container > button:hover,
+.username-btn:hover {
   background-color: #9905ef;
 }
 
 .profile-container > button:disabled {
   background-color: #aaaaaa;
   cursor: not-allowed;
+}
+
+.username-input-div {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.3em;
+}
+.special {
+  padding: 0 0.3em;
+}
+#userName {
+  border: 1px solid rgba(209, 213, 219);
+  height: 40px;
+  text-indent: 10px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+  border-radius: 6px;
+}
+#userName :focus {
+  outline: none;
+}
+
+.username-btn {
+  max-width: 100px;
+  height: 40px;
+}
+
+@media (min-width: 768px) {
+  .username-input-div {
+    flex-direction: row;
+    gap: 0.3em;
+  }
+  .username-btn {
+    margin-top: 0;
+    height: 40px;
+  }
 }
 
 /* //update Profile page */
@@ -1278,6 +1331,7 @@ footer {
   margin: 0.3em 0;
   opacity: 1;
   font-family: Inter;
-  color: #ff8c38;
+  /* color: #ff8c38; */
+  color: var(--header-right);
   font-weight: 600;
 }
