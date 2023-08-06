@@ -54,51 +54,53 @@ export default function UpdateProfile() {
 
   return (
     <div className="login-container">
-      <h1>Update Profile</h1>
-      <form onSubmit={handleSubmit} className="login-form">
-        <label className="label-input" htmlFor="email">
-          Email
-        </label>
-        <input
-          name="email"
-          onChange={handleChange}
-          type="email"
-          placeholder="Email address"
-          value={updateFormData.email}
-          required
-        />
-        <label className="label-input" htmlFor="password">
-          Password
-        </label>
-        <input
-          id="password"
-          name="password"
-          onChange={handleChange}
-          type="password"
-          placeholder="Leave blank to keep the same"
-          value={updateFormData.password}
-        />
-        <label className="label-input" htmlFor="passwordConfirm">
-          Password Confirm
-        </label>
-        <input
-          name="passwordConfirm"
-          onChange={handleChange}
-          type="password"
-          placeholder="Leave blank to keep the same"
-          value={updateFormData.passwordConfirm}
-        />
-        {error && (
-          <div className="alert">
-            <h3 className="login-error">{error}</h3>
-          </div>
-        )}
-        <button disabled={status === "submitting"}>
-          {status === "submitting" ? "Updating..." : "Update"}
-        </button>
-      </form>
-      <div>
-        <Link to="/dashboard"> Cancel </Link>
+      <div className="glass-container">
+        <h1>Update Profile</h1>
+        <form onSubmit={handleSubmit} className="form">
+          <label className="input-label" htmlFor="email">
+            Email
+          </label>
+          <input
+            name="email"
+            onChange={handleChange}
+            type="email"
+            placeholder="Email address"
+            value={updateFormData.email}
+            required
+          />
+          <label className="input-label" htmlFor="password">
+            Password
+          </label>
+          <input
+            id="password"
+            name="password"
+            onChange={handleChange}
+            type="password"
+            placeholder="Leave blank to keep the same"
+            value={updateFormData.password}
+          />
+          <label className="input-label" htmlFor="passwordConfirm">
+            Password Confirm
+          </label>
+          <input
+            name="passwordConfirm"
+            onChange={handleChange}
+            type="password"
+            placeholder="Leave blank to keep the same"
+            value={updateFormData.passwordConfirm}
+          />
+          {error && (
+            <div className="alert">
+              <h3 className="login-error">{error}</h3>
+            </div>
+          )}
+          <button disabled={status === "submitting"}>
+            {status === "submitting" ? "Updating..." : "Update"}
+          </button>
+        </form>
+        <div className="link-div">
+          <Link to="/dashboard"> Cancel </Link>
+        </div>
       </div>
     </div>
   );

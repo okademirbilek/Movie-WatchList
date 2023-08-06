@@ -40,28 +40,36 @@ export default function ForgotPassword() {
 
   return (
     <div className="login-container">
-      <h1>Reset your password</h1>
-      <form onSubmit={handleSubmit} className="reset-form">
-        <input
-          name="email"
-          onChange={handleChange}
-          type="email"
-          placeholder="Email address"
-          value={loginFormData.email}
-          required
-        />
-        {error && (
-          <div className="alert">
-            <h3 className="login-error">{error}</h3>
-          </div>
-        )}
-        <button disabled={status === "submitting"}>
-          {status === "submitting" ? "waiting..." : "Reset Password"}
-        </button>
-        {message && <h3>{message}</h3>}
-      </form>
-      <div>
-        <Link to="/login"> Sign In </Link>
+      <div className="glass-container">
+        <h1>Reset password</h1>
+        <form onSubmit={handleSubmit} className="form">
+          <label className="input-label" htmlFor="reset-email">
+            Email
+          </label>
+          <input
+            id="reset-email"
+            name="email"
+            onChange={handleChange}
+            type="email"
+            placeholder="Email address"
+            value={loginFormData.email}
+            required
+          />
+          {error && (
+            <div className="alert">
+              <h3 className="login-error">{error}</h3>
+            </div>
+          )}
+          <button disabled={status === "submitting"}>
+            {status === "submitting" ? "waiting..." : "Reset Password"}
+          </button>
+          {message && <h3>{message}</h3>}
+        </form>
+        <div className="link-div">
+          <Link className="form-link" to="/login">
+            Sign In
+          </Link>
+        </div>
       </div>
     </div>
   );

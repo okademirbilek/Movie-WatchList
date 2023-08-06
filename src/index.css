@@ -237,15 +237,6 @@ form > button {
 .film-input:focus {
   outline: none;
 }
-/* input[type="text"] {
-  border: none;
-  font-size: 1rem;
-  background-color: var(--main);
-  color: var(--text);
-}
-input[type="text"]:focus {
-  outline: none;
-} */
 
 /*********************** media *********************/
 
@@ -319,12 +310,6 @@ input[type="text"]:focus {
 .play-btn:hover {
   cursor: pointer;
 }
-
-/* .movie-icon {
-  top: -14px;
-  right: 17px;
-} */
-
 /*********************** media *********************/
 @media (min-width: 600px) {
   .carousel {
@@ -1033,7 +1018,7 @@ hr {
   border: 1px solid var(--header-right);
 }
 
-label {
+.close {
   color: white;
   font-size: 0.6em;
   text-transform: uppercase;
@@ -1130,62 +1115,98 @@ footer {
   justify-content: center;
   height: 100vh;
   gap: 1em;
+  background: url("https://images2.alphacoders.com/132/1320812.png");
+  /* https://images7.alphacoders.com/131/1319313.jpeg */
+  /* "https://images3.alphacoders.com/114/1143846.jpg" flash */
+  /* https://images6.alphacoders.com/131/1319253.jpeg */
+  /* https://images6.alphacoders.com/131/1319608.jpeg */
+
+  background-repeat: none;
+  background-position: center;
+  background-size: cover;
+  /* color: black; */
 }
 
-.login-form,
-.login-form2,
-.reset-form {
+.glass-container > h1 {
+  font-family: "Times New Roman", Times, serif;
+  color: #53ddff;
+}
+
+.link-div {
+  margin-top: 1em;
+}
+.link-div > a {
+  color: #53ddff;
+  font-weight: 600;
+}
+.link-div > a:hover {
+  color: #00ccff;
+}
+
+a {
+  text-decoration: none;
+}
+
+.form {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 500px;
 }
 
-.login-form > input,
-.login-form2 > input,
-.reset-form > input {
+.glass-container {
+  /* background: rgba(69, 89, 166, 0.2);
+  border: 1px solid rgba(69, 89, 166, 0.1); */
+  padding: 2em;
+
+  background: rgba(37, 35, 35, 0.5);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(37, 35, 35, 0.125);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 27px;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-label {
+  margin-top: 0.4em;
+  /* font-size: var(--smallFontL); */
+}
+
+.form > input {
   border: 1px solid rgba(209, 213, 219);
-  height: 40px;
+  height: 50px;
   text-indent: 10px;
   font-family: "Inter", sans-serif;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   font-weight: 400;
+  border-radius: 6px;
 }
-
-.login-form > input:focus,
-.login-form2 > input:focus,
-.reset-form > input:focus {
+.form > input:focus {
   outline: none;
 }
 
-.login-form > input:first-of-type {
-  border-radius: 6px 6px 0px 0px;
-}
+.form > button {
+  /* background-color: #c74e03; */
 
-.login-form > input:last-of-type {
-  border-radius: 0px 0px 6px 6px;
-  border-top: none;
-}
-
-.reset-form > input {
-  border-radius: 6px;
-}
-
-.login-form > button,
-.login-form2 > button,
-.reset-form > button {
-  background-color: #ff8c38;
   border: none;
   border-radius: 6px;
-  height: 55px;
+  height: 50px;
   margin-top: 22px;
   color: white;
   font-family: "Inter", sans-serif;
   cursor: pointer;
 }
 
-.login-form > button:disabled,
-.login-form2 > button:disabled {
+.form > button:hover {
+  background-color: #53ddff;
+}
+
+.form > button:disabled {
   background-color: #aaaaaa;
   cursor: not-allowed;
 }
@@ -1209,33 +1230,22 @@ footer {
   margin: 0;
 }
 
-.input-with-icon,
-.input-with-icon2 {
+.input-with-icon {
   display: flex;
   background-color: white;
-  border: 1px solid rgba(209, 213, 219);
-  height: 40px;
-  /* text-indent: 10px; */
+  height: 50px;
   font-family: "Inter", sans-serif;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   font-weight: 400;
+  border-radius: 6px;
 }
 
-.input-with-icon2 {
-  border-radius: 0px 0px 6px 6px;
-  border-top: none;
-}
-
-.custom-input,
-.custom-input2 {
+.custom-input {
   width: 90%;
-  border: none;
-  outline: none;
+  border: 1px solid rgba(209, 213, 219);
   text-indent: 10px;
-}
-
-.custom-input3 {
-  border-radius: 6px 6px 0px 0px;
+  border-radius: 6px 0px 0px 6px;
+  border-right: none;
 }
 
 .icon-comp {
@@ -1246,6 +1256,9 @@ footer {
   align-items: center;
   color: black;
   cursor: pointer;
+  border: 1px solid rgba(209, 213, 219);
+  border-radius: 0 6px 6px 0;
+  border-left: none;
 }
 
 @media (min-width: 768px) {
@@ -1262,16 +1275,21 @@ footer {
   justify-content: center;
   align-items: center;
 }
-.profile-container {
+.flex-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* color: black; */
   color: white;
   width: 90%;
   height: 80%;
   border: 2px solid var(--header-right);
+  border-radius: 10px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .profile-container > h1 {
@@ -1279,21 +1297,20 @@ footer {
   color: var(--header-right);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.profile-container > h2 {
-  margin-top: 0.5em;
+.profile-container > h3 {
+  font-size: var(--mediumFontM);
+  margin-top: -0.2em;
 }
 
 .profile-container > a {
   font-size: var(--mediumFontM);
-  color: var(--header-right);
 }
-.profile-container > a:hover {
+/* .profile-container > a:hover {
   color: #9905ef;
-}
+} */
 
 .profile-container > button,
 .username-btn {
-  /* background-color: #ff8c38; */
   background-color: var(--header-left);
   border: none;
   border-radius: 6px;
@@ -1303,6 +1320,7 @@ footer {
   font-family: "Inter", sans-serif;
   cursor: pointer;
   padding: 0 20px;
+  max-width: 250px;
 }
 .profile-container > button:hover,
 .username-btn:hover {
@@ -1317,10 +1335,6 @@ footer {
 .username-input-div {
   display: flex;
   flex-direction: column;
-  padding: 0 0.3em;
-}
-.special {
-  padding: 0 0.3em;
 }
 #userName {
   border: 1px solid rgba(209, 213, 219);
@@ -1339,6 +1353,19 @@ footer {
   max-width: 100px;
   height: 40px;
 }
+.update-btn {
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  background-color: var(--header-left);
+}
+
+.update-btn:hover {
+  background-color: #9905ef;
+}
+.update-btn > a {
+  color: white;
+}
 
 @media (min-width: 768px) {
   .username-input-div {
@@ -1353,7 +1380,8 @@ footer {
 
 /* //update Profile page */
 
-.label-input {
+.label-input,
+.label-input2 {
   font-size: var(--mediumFontS);
   margin: 0.3em 0;
   opacity: 1;
@@ -1361,4 +1389,8 @@ footer {
   /* color: #ff8c38; */
   color: var(--header-right);
   font-weight: 600;
+}
+.label-input2 {
+  font-size: var(--mediumFontM);
+  font-weight: 400;
 }

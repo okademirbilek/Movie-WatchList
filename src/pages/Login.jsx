@@ -50,61 +50,75 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <h1>Sign in to your account</h1>
-      <form onSubmit={handleSubmit} className="login-form2">
-        <input
-          name="email"
-          onChange={handleChange}
-          type="email"
-          placeholder="Email address"
-          value={loginFormData.email}
-          className="custom-input3"
-          required
-        />
-        <div className="input-with-icon2">
+      <div className="glass-container">
+        <h1>Sign in </h1>
+        <form onSubmit={handleSubmit} className="form">
+          <label className="input-label" htmlFor="login-email">
+            Email
+          </label>
           <input
-            name="password"
+            id="login-email"
+            name="email"
             onChange={handleChange}
-            type={inputType}
-            placeholder="Password"
-            value={loginFormData.password}
-            minLength={6}
-            className="custom-input2"
+            type="email"
+            placeholder="Email address"
+            value={loginFormData.email}
             required
           />
-          {inputType === "password" ? (
-            <Icon
-              icon={eyeOff}
-              onClick={() => setInputType("text")}
-              className="icon-comp"
-              size={25}
-              style={{ display: "flex" }}
+          <label className="input-label" htmlFor="login-password">
+            Password
+          </label>
+          <div className="input-with-icon">
+            <input
+              id="login-password"
+              name="password"
+              onChange={handleChange}
+              type={inputType}
+              placeholder="Password"
+              value={loginFormData.password}
+              minLength={6}
+              className="custom-input"
+              required
             />
-          ) : (
-            <Icon
-              icon={eye}
-              onClick={() => setInputType("password")}
-              className="icon-comp"
-              size={25}
-              style={{ display: "flex" }}
-            />
-          )}
-        </div>
-
-        {error && (
-          <div className="alert">
-            <h3 className="login-error">{error}</h3>
+            {inputType === "password" ? (
+              <Icon
+                icon={eyeOff}
+                onClick={() => setInputType("text")}
+                className="icon-comp"
+                size={25}
+                style={{ display: "flex" }}
+              />
+            ) : (
+              <Icon
+                icon={eye}
+                onClick={() => setInputType("password")}
+                className="icon-comp"
+                size={25}
+                style={{ display: "flex" }}
+              />
+            )}
           </div>
-        )}
-        <button disabled={status === "submitting"}>
-          {status === "submitting" ? "Logging in..." : "Log In"}
-        </button>
-      </form>
-      <div>
-        <Link to="/forgot-password"> Forgot Password? </Link>
-      </div>
-      <div>
-        Don’t have an account? <Link to="/sign-up"> Sign Up </Link>
+
+          {error && (
+            <div className="alert">
+              <h3 className="login-error">{error}</h3>
+            </div>
+          )}
+          <button disabled={status === "submitting"}>
+            {status === "submitting" ? "Logging in..." : "Log In"}
+          </button>
+        </form>
+        <div className="link-div">
+          <Link className="form-link" to="/forgot-password">
+            Forgot Password?
+          </Link>
+        </div>
+        <div className="link-div">
+          Don’t have an account?{" "}
+          <Link className="form-link" to="/sign-up">
+            Sign Up
+          </Link>
+        </div>
       </div>
     </div>
   );

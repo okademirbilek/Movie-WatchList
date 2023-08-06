@@ -48,68 +48,84 @@ export default function SignUp() {
 
   return (
     <div className="login-container">
-      <h1>Sign up</h1>
-      <form onSubmit={handleSubmit} className="login-form">
-        <input
-          name="email"
-          onChange={handleChange}
-          type="email"
-          placeholder="Email address"
-          value={signUpFormData.email}
-          required
-        />
-
-        <div className="input-with-icon">
+      <div className="glass-container">
+        <h1>Sign up</h1>
+        <form onSubmit={handleSubmit} className="form">
+          <label className="input-label" htmlFor="sign-up-email">
+            Email
+          </label>
           <input
-            name="password"
+            name="email"
+            onChange={handleChange}
+            type="email"
+            placeholder="Email address"
+            value={signUpFormData.email}
+            id="sign-up-email"
+            required
+          />
+          <label className="input-label" htmlFor="sign-up-password">
+            Password
+          </label>
+          <div className="input-with-icon">
+            <input
+              id="sign-up-password"
+              name="password"
+              onChange={handleChange}
+              type={inputType}
+              placeholder="Password"
+              value={signUpFormData.password}
+              minLength={6}
+              maxLength={40}
+              required
+              className="custom-input"
+            />
+            {inputType === "password" ? (
+              <Icon
+                icon={eyeOff}
+                onClick={() => setInputType("text")}
+                className="icon-comp"
+                size={25}
+                style={{ display: "flex" }}
+              />
+            ) : (
+              <Icon
+                icon={eye}
+                onClick={() => setInputType("password")}
+                className="icon-comp"
+                size={25}
+                style={{ display: "flex" }}
+              />
+            )}
+          </div>
+          <label className="input-label" htmlFor="sign-up-confirm">
+            Confirm password
+          </label>
+          <input
+            id="sign-up-confirm"
+            name="passwordConfirm"
             onChange={handleChange}
             type={inputType}
-            placeholder="Password"
-            value={signUpFormData.password}
-            minLength={6}
+            placeholder="Confirm password "
+            value={signUpFormData.passwordConfirm}
             maxLength={40}
             required
-            className="custom-input"
           />
-          {inputType === "password" ? (
-            <Icon
-              icon={eyeOff}
-              onClick={() => setInputType("text")}
-              className="icon-comp"
-              size={25}
-              style={{ display: "flex" }}
-            />
-          ) : (
-            <Icon
-              icon={eye}
-              onClick={() => setInputType("password")}
-              className="icon-comp"
-              size={25}
-              style={{ display: "flex" }}
-            />
+          {error && (
+            <div className="alert">
+              <h3 className="login-error">{error}</h3>
+            </div>
           )}
+          <button disabled={status === "submitting"}>
+            {status === "submitting" ? "Signing up..." : "Sign up"}
+          </button>
+        </form>
+        <div className="link-div">
+          Already have an account?{" "}
+          <Link className="form-link" to="/login">
+            {" "}
+            Sign In{" "}
+          </Link>
         </div>
-
-        <input
-          name="passwordConfirm"
-          onChange={handleChange}
-          type={inputType}
-          placeholder="Confirm password "
-          value={signUpFormData.passwordConfirm}
-          maxLength={40}
-          required
-        />
-        {error && (
-          <div className="alert">
-            <h3 className="login-error">{error}</h3>
-          </div>
-        )}
-        <button disabled={status === "submitting"}>
-          {status === "submitting" ? "Signing up..." : "Sign up"}
-        </button>
-      </form>
-      <div>
-        Already have an account? <Link to="/login"> Sign In </Link>
       </div>
     </div>
   );

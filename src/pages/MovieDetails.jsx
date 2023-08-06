@@ -68,7 +68,7 @@ export default function MovieDetails() {
         </div>
         {onToggle === true ? (
           <div className="trailer-container">
-            <div onClick={() => setOnToggle(false)} class="close-container">
+            <div onClick={() => setOnToggle(false)} className="close-container">
               <div className="leftright"></div>
               <div className="rightleft"></div>
               <label className="close">close</label>

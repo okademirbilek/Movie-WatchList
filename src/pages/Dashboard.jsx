@@ -39,29 +39,34 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
-      <div className="profile-container">
-        <h1>Profile</h1>
-        <form onSubmit={handleSubmit} className="reset-form">
-          <label className="label-input special" htmlFor="userName">
-            Username
-          </label>
-          <div className="username-input-div">
-            <input
-              name="userName"
-              onChange={handleChange}
-              type="text"
-              value={userName}
-              placeholder="Username cannot be empty"
-              id="userName"
-              maxLength={15}
-            />
-            <button className="username-btn">Save</button>
-          </div>
-        </form>
-        <h2>{currentUser.email}</h2>
-        {error && <h2>{error}</h2>}
-        <Link to="/update-profile">Update Profile</Link>
-        <button onClick={handleLogout}>Log Out</button>
+      <div className="flex-container">
+        <div className="profile-container">
+          <h1>Profile</h1>
+          <form onSubmit={handleSubmit} className="reset-form">
+            <label className="label-input2" htmlFor="userName">
+              Username
+            </label>
+            <div className="username-input-div">
+              <input
+                id="userName"
+                name="userName"
+                onChange={handleChange}
+                type="text"
+                value={userName}
+                placeholder="Username cannot be empty"
+                maxLength={15}
+              />
+              <button className="username-btn">Save</button>
+            </div>
+          </form>
+          <label className="label-input2">Email</label>
+          <h3>{currentUser.email}</h3>
+          {error && <h2>{error}</h2>}
+          <Link className="update-btn" to="/update-profile">
+            Update Profile
+          </Link>
+          <button onClick={handleLogout}>Log Out</button>
+        </div>
       </div>
     </div>
   );
