@@ -17,6 +17,7 @@ import Header from "./components/Header";
 import PaginatedItems from "./components/PaginatedItems";
 import PopularMovies from "./components/PopularMovies";
 import { SnackbarProvider } from "notistack";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
+          <Footer />
           <SnackbarProvider autoHideDuration={1000} />
         </BrowserRouter>
       </div>

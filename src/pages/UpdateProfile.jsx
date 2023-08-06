@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function UpdateProfile() {
@@ -9,7 +9,7 @@ export default function UpdateProfile() {
     password: "",
     passwordConfirm: "",
   });
-  //signup function from useAuth context (email, password)
+
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
 

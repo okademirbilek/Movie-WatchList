@@ -26,7 +26,6 @@ function PaginatedItems() {
 
   useEffectOnUpdate(() => {
     if (isNaN(parseInt(params.page))) {
-      alert("bırak lan path ile oynamayı");
       navigate(`/`);
       setCurrentPage(1);
     } else {
@@ -83,7 +82,6 @@ function PaginatedItems() {
               key={filmData.imdbID}
               filmData={filmData}
               onClick={addNewMovie}
-              // onClick={addToWatchList}
               btnId="add-btn"
               wantSpace={true}
             />

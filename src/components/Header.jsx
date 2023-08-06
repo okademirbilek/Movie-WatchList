@@ -38,7 +38,7 @@ function Header() {
         <Link to="/dashboard">
           <div className="user-link">
             <img src={avatar} className="avatar-icon"></img>
-            <h5>{currentUser.displayName}</h5>
+            <h5>{currentUser?.displayName || "MovieStar123"}</h5>
           </div>
         </Link>
       </nav>

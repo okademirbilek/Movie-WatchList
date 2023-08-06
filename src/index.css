@@ -364,7 +364,26 @@ input[type="text"]:focus {
   display: flex;
   flex-direction: row;
   width: 83vw;
-  background-color: var(--popular-movie);
+  /* background-color: var(--popular-movie); */
+  /* background: #702c91;
+  background: -webkit-linear-gradient(0deg, #702c91 0%, #242424 100%);
+  background: linear-gradient(0deg, #702c91 0%, #242424 100%); */
+  /* background: #702c91;
+  background: -webkit-linear-gradient(
+    0deg,
+    #702c91 0%,
+    #44135b 50%,
+    #242424 100%
+  );
+  background: linear-gradient(0deg, #702c91 0%, #44135b 50%, #242424 100%); */
+  background: #702c91;
+  background: -webkit-linear-gradient(
+    0deg,
+    #702c91 0%,
+    #291d31 50%,
+    #242424 100%
+  );
+  background: linear-gradient(0deg, #702c91 0%, #291d31 50%, #242424 100%);
   border-radius: 0.4em;
   place-self: center;
   padding: 0;

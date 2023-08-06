@@ -26,9 +26,7 @@ export default function Dashboard() {
 
     setError("");
     await updateUserName({ displayName: userName, photoURL: "" })
-      .then(() => {
-        // console.log("it worked");
-      })
+      .then(() => {})
       .catch(() => {
         setError("Failed to update userName");
       });
@@ -53,6 +51,7 @@ export default function Dashboard() {
               onChange={handleChange}
               type="text"
               value={userName}
+              placeholder="Username cannot be empty"
               id="userName"
               maxLength={15}
             />
