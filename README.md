@@ -2,8 +2,9 @@
 It's a React  movie app that you can search current movies and add to your watchlist
 link:https://watchlistod.netlify.app/
 ![image](https://github.com/okademirbilek/Movie-WatchList/assets/48480726/de354ff0-2608-45e4-bb4c-3170456d8d3d)
-![image](https://github.com/okademirbilek/Movie-WatchList/assets/48480726/e80f8bf5-8d73-4c99-81a1-9579d779c9e9)
-![image](https://github.com/okademirbilek/Movie-WatchList/assets/48480726/deeab3f6-19ee-41ec-b79a-928005ad538c)
-![image](https://github.com/okademirbilek/Movie-WatchList/assets/48480726/b5d6fc43-37fb-43f8-a1ca-b11d8a1ea6fb)
+![image](https://github.com/okademirbilek/Movie-WatchList/assets/48480726/df74b720-bd7c-46c4-8d3e-6790f57664ab)
+![image](https://github.com/okademirbilek/Movie-WatchList/assets/48480726/53c49e9e-9fee-40a3-b7ce-5c5aaccfb5e8)
+![image](https://github.com/okademirbilek/Movie-WatchList/assets/48480726/b98082e3-dd59-4899-8d74-bed1258a77d1)
+
 
 
