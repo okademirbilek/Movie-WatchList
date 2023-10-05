@@ -1107,6 +1107,7 @@ footer {
 
 /******************************************* LOGIN PAGE ********************************* */
 .login-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1154,10 +1155,7 @@ a {
 }
 
 .glass-container {
-  /* background: rgba(69, 89, 166, 0.2);
-  border: 1px solid rgba(69, 89, 166, 0.1); */
   padding: 2em;
-
   background: rgba(37, 35, 35, 0.5);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
@@ -1169,6 +1167,7 @@ a {
   padding-inline: 27px;
   align-items: center;
   justify-content: center;
+  max-width: 441px;
 }
 
 .input-label {
@@ -1392,4 +1391,58 @@ a {
 .label-input2 {
   font-size: var(--mediumFontM);
   font-weight: 400;
+}
+
+/** POPUP LOGİN**/
+
+/* .popup{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  max-width: 600px;
+  height: 600px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: rgba(83,221,255,0.5);
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(83,221,255,0.25);
+  border-radius: 10px;
+}
+
+.popup > h4{
+  margin: 0 0.5em;
+  color: whitesmoke;
+  font-size: 1.4rem;
+}
+
+.popup > h1{
+  text-align: center;
+  color: green;
+}
+
+.close-btn{
+  position: absolute;
+  top:5px;
+  right: 5px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+} */
+
+.caution{
+  width: 100%;
+  background-color: #218838;
+  border-radius: 5px;
+  padding: 5px;
+}
+.caution > p{
+  max-width: 375px;
+  margin: 0 auto;
 }
