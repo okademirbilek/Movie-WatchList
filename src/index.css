@@ -1440,9 +1440,10 @@ a {
   width: 100%;
   background-color: #218838;
   border-radius: 5px;
-  padding: 5px;
+  padding: 5px 0;
 }
 .caution > p{
   max-width: 375px;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0 0.1em;
 }
